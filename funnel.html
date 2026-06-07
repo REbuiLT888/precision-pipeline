@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Precision Pipeline — Free Trade Business Audit</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    DESIGN SYSTEM — Precision Pipeline
@@ -21,10 +21,10 @@
   --red2:#b81d14;
   --red-glow:rgba(232,37,26,.18);
   --white:#ffffff;
-  --grey:#a0a0a0;
+  --grey:#b4b4b4;
   --grey2:#666;
-  --font-head:'Barlow Condensed',sans-serif;
-  --font-body:'Barlow',sans-serif;
+  --font-head:'Oswald',sans-serif;
+  --font-body:'Inter',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--black)}
@@ -32,11 +32,11 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--red)}
 
 /* ---- REUSABLE DESIGN TOKENS ---- */
-.tag{display:inline-block;font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:var(--red);margin-bottom:10px}
-.heading-xl{font-family:var(--font-head);font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(44px,9vw,88px);line-height:.92;letter-spacing:-1px}
-.heading-lg{font-family:var(--font-head);font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(30px,5vw,52px);line-height:.95;letter-spacing:-.5px}
-.heading-md{font-family:var(--font-head);font-weight:800;text-transform:uppercase;font-size:clamp(22px,4vw,34px);line-height:1;letter-spacing:.2px}
-.subtext{font-size:14px;color:var(--grey);line-height:1.55;font-weight:400}
+.tag{display:inline-block;font-family:var(--font-head);font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:10px;color:var(--red);margin-bottom:10px}
+.heading-xl{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:clamp(40px,8vw,80px);line-height:.95;letter-spacing:.5px}
+.heading-lg{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:clamp(26px,4.5vw,46px);line-height:1;letter-spacing:.5px}
+.heading-md{font-family:var(--font-head);font-weight:600;text-transform:uppercase;font-size:clamp(20px,3.5vw,30px);line-height:1.05;letter-spacing:.5px}
+.subtext{font-size:15px;color:var(--grey);line-height:1.6;font-weight:400}
 
 /* ---- ANGLED ACCENT (logo-inspired) ---- */
 .slash{display:inline-block;width:3px;height:1em;background:var(--red);transform:skewX(-12deg);margin:0 10px;vertical-align:middle;flex-shrink:0}
@@ -49,7 +49,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 22px;height:60px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px}
 .nav-logo svg{height:32px;width:auto}
-.nav-wordmark{font-family:var(--font-head);font-weight:900;font-style:italic;text-transform:uppercase;font-size:20px;letter-spacing:.5px;line-height:1}
+.nav-wordmark{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:18px;letter-spacing:1px;line-height:1}
 .nav-wordmark .red{color:var(--red)}
 .nav-cta{background:var(--red);color:#fff;border:none;padding:9px 20px;border-radius:0;font-family:var(--font-head);font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:13px;cursor:pointer;text-decoration:none;clip-path:polygon(0 0,100% 0,96% 100%,0 100%);transition:.15s;padding-right:26px}
 .nav-cta:hover{background:var(--red2)}
@@ -79,11 +79,11 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 /* ============================================================
    PRIMARY BUTTON — component
    ============================================================ */
-.btn-primary{background:var(--red);color:#fff;border:none;padding:14px 32px;font-family:var(--font-head);font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:16px;cursor:pointer;transition:.15s;clip-path:polygon(0 0,100% 0,96% 100%,0 100%);padding-right:40px;display:inline-flex;align-items:center;gap:10px;position:relative}
+.btn-primary{background:var(--red);color:#fff;border:none;padding:14px 32px;font-family:var(--font-head);font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:15px;cursor:pointer;transition:.15s;clip-path:polygon(0 0,100% 0,96% 100%,0 100%);padding-right:40px;display:inline-flex;align-items:center;gap:10px;position:relative}
 .btn-primary:hover{background:var(--red2);transform:translateY(-1px)}
 .btn-primary:disabled{background:var(--line2);color:var(--grey2);cursor:not-allowed;transform:none;clip-path:none}
 .btn-primary.full{width:100%;justify-content:center;clip-path:polygon(0 0,100% 0,97% 100%,0 100%);padding-right:36px}
-.btn-secondary{background:transparent;color:var(--grey);border:1px solid var(--line2);padding:14px 22px;font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:.8px;font-size:14px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary{background:transparent;color:var(--grey);border:1px solid var(--line2);padding:14px 22px;font-family:var(--font-head);font-weight:500;text-transform:uppercase;letter-spacing:1px;font-size:13px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:8px}
 .btn-secondary:hover{border-color:var(--grey);color:var(--white)}
 
 /* ============================================================
@@ -125,7 +125,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 .opt-card.sel .opt-icon{background:rgba(232,37,26,.12);border-color:rgba(232,37,26,.3)}
 .opt-icon svg{width:20px;height:20px}
 .opt-body{flex:1;min-width:0}
-.opt-title{font-family:var(--font-head);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.3px;color:var(--white);margin-bottom:2px}
+.opt-title{font-family:var(--font-head);font-weight:600;text-transform:uppercase;font-size:14px;letter-spacing:.5px;color:var(--white);margin-bottom:2px}
 .opt-desc{font-size:12px;color:var(--grey2);line-height:1.4}
 .opt-check{width:18px;height:18px;border:1px solid var(--line2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s}
 .opt-card.sel .opt-check{background:var(--red);border-color:var(--red)}
@@ -158,15 +158,15 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 .result-received::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
 .result-received .rr-tag{font-family:var(--font-head);text-transform:uppercase;letter-spacing:2px;font-size:10px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .result-received .rr-tag::before{content:'';width:16px;height:2px;background:var(--red);flex-shrink:0}
-.result-received h2{font-family:var(--font-head);font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(26px,5vw,38px);line-height:1;margin-bottom:10px}
+.result-received h2{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:clamp(22px,4vw,34px);line-height:1.05;margin-bottom:10px}
 .result-received p{font-size:14px;color:var(--grey);line-height:1.6;max-width:480px}
 .pkg-block{background:var(--card);border:1px solid var(--line);padding:24px;margin-bottom:14px;position:relative}
 .pkg-block::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
 .pkg-name-row{display:flex;align-items:center;gap:12px;margin-bottom:4px}
-.pkg-name{font-family:var(--font-head);font-weight:900;font-style:italic;text-transform:uppercase;font-size:28px;color:var(--white)}
+.pkg-name{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:26px;color:var(--white)}
 .pkg-tag{font-family:var(--font-head);text-transform:uppercase;letter-spacing:1px;font-size:11px;color:var(--grey2);margin-bottom:16px}
 .pkg-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:18px;flex-wrap:wrap}
-.pkg-price-setup{font-family:var(--font-head);font-weight:900;font-style:italic;font-size:42px;color:var(--white)}
+.pkg-price-setup{font-family:var(--font-head);font-weight:700;font-size:40px;color:var(--white)}
 .pkg-price-mo{font-family:var(--font-head);font-weight:700;font-size:22px;color:var(--grey2)}
 .pkg-price-label{font-size:12px;color:var(--grey2)}
 .pkg-inc{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
@@ -217,7 +217,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);-webki
 .out-card:first-child::before{background:var(--red)}
 .out-card .oc-icon{margin-bottom:16px}
 .out-card .oc-icon svg{width:28px;height:28px}
-.out-card .oc-title{font-family:var(--font-head);font-weight:900;text-transform:uppercase;font-size:17px;letter-spacing:.3px;margin-bottom:8px}
+.out-card .oc-title{font-family:var(--font-head);font-weight:600;text-transform:uppercase;font-size:16px;letter-spacing:.5px;margin-bottom:8px}
 .out-card .oc-desc{font-size:13px;color:var(--grey);line-height:1.6}
 
 footer{background:var(--black);border-top:1px solid var(--line);padding:24px 22px;text-align:center}
@@ -649,7 +649,7 @@ footer a:hover{color:var(--white)}
       <div class="out-card">
         <div class="oc-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="18" rx="1" stroke="#E8251A" stroke-width="1.5"/><path d="M10 21v4M18 21v4M7 25h14" stroke="#E8251A" stroke-width="1.5" stroke-linecap="round"/><path d="M8 10h12M8 14h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".4"/></svg></div>
         <div class="oc-title">Stronger Online Presence</div>
-        <div class="oc-desc">Trades with 50+ reviews and no website are invisible to people searching. A properly built site with local SEO changes that directly.</div>
+        <div class="oc-desc">Trades with 50+ reviews and no website are invisible to people searching. A properly built site with local SEO helps turn search traffic into direct enquiries.</div>
       </div>
       <div class="out-card">
         <div class="oc-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4v20M4 14h20" stroke="#E8251A" stroke-width="1.5" stroke-linecap="round" opacity=".3"/><path d="M22 8l-8 8-4-4" stroke="#E8251A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="14" r="10" stroke="#E8251A" stroke-width="1.5"/></svg></div>
