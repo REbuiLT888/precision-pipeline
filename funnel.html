@@ -4,621 +4,547 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Precision Pipeline — Free Trade Business Audit</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#0a0a0a;--white:#ffffff;--off:#f5f4f1;
-  --red:#E8251A;--red2:#c41e14;
-  --steel:#1a1a2e;--steel2:#16213e;
-  --muted:#888;--line:#e0ddd8;
-  --green:#16a34a;--amber:#d97706;
-}
+:root{--ink:#0a0a0a;--white:#fff;--off:#f5f4f1;--red:#E8251A;--red2:#c41e14;--steel:#1a1a2e;--muted:#888;--line:#e0ddd8;--green:#16a34a;--amber:#d97706}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--off);color:var(--ink);font-family:'Barlow',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{background:var(--off);color:var(--ink);font-family:'Barlow',sans-serif;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--line)}
 
 /* HERO */
 .hero{background:var(--steel);min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 20%,rgba(232,37,26,.18) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--off));pointer-events:none}
-
-.nav{padding:20px 32px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
-.logo{font-family:'Bebas Neue';font-size:26px;color:var(--white);letter-spacing:1px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 20%,rgba(232,37,26,.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to bottom,transparent,var(--off));pointer-events:none}
+.nav{padding:20px 28px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+.logo{font-family:'Bebas Neue';font-size:26px;color:#fff;letter-spacing:1px}
 .logo span{color:var(--red)}
-.nav-cta{background:var(--red);color:#fff;border:none;padding:9px 18px;border-radius:7px;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.8px;font-size:13px;cursor:pointer;transition:.15s;text-decoration:none}
-.nav-cta:hover{background:var(--red2)}
-
-.hero-body{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px 140px;position:relative;z-index:2}
-.hero-inner{max-width:760px;text-align:center}
-.eyebrow{display:inline-block;font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:2px;font-size:12px;color:var(--red);background:rgba(232,37,26,.12);padding:5px 14px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(232,37,26,.2)}
-.hero h1{font-family:'Bebas Neue';font-size:clamp(52px,10vw,96px);line-height:.95;color:var(--white);margin-bottom:20px}
+.nav-btn{background:var(--red);color:#fff;border:none;padding:9px 18px;border-radius:7px;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.8px;font-size:13px;cursor:pointer;text-decoration:none;transition:.15s}
+.nav-btn:hover{background:var(--red2)}
+.hero-body{flex:1;display:flex;align-items:center;justify-content:center;padding:50px 22px 130px;position:relative;z-index:2}
+.hero-inner{max-width:720px;text-align:center}
+.eyebrow{display:inline-block;font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:2px;font-size:12px;color:var(--red);background:rgba(232,37,26,.1);padding:5px 14px;border-radius:20px;margin-bottom:22px;border:1px solid rgba(232,37,26,.2)}
+.hero h1{font-family:'Bebas Neue';font-size:clamp(50px,10vw,92px);line-height:.93;color:#fff;margin-bottom:18px}
 .hero h1 .hl{color:var(--red);display:block}
-.hero-sub{font-size:clamp(16px,2.5vw,20px);color:rgba(255,255,255,.65);line-height:1.55;max-width:560px;margin:0 auto 36px;font-weight:400}
-.hero-cta{background:var(--red);color:#fff;border:none;padding:16px 36px;border-radius:9px;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:18px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(232,37,26,.35)}
-.hero-cta:hover{background:var(--red2);transform:translateY(-1px);box-shadow:0 12px 40px rgba(232,37,26,.45)}
-.hero-cta .arr{transition:.2s}
-.hero-cta:hover .arr{transform:translateX(4px)}
-.hero-note{margin-top:16px;font-size:13px;color:rgba(255,255,255,.35);font-family:'Barlow Condensed';letter-spacing:.5px;text-transform:uppercase}
+.hero-sub{font-size:clamp(15px,2.4vw,19px);color:rgba(255,255,255,.6);line-height:1.55;max-width:520px;margin:0 auto 32px}
+.hero-cta{background:var(--red);color:#fff;border:none;padding:15px 34px;border-radius:9px;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:17px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:9px;box-shadow:0 8px 28px rgba(232,37,26,.35)}
+.hero-cta:hover{background:var(--red2);transform:translateY(-1px)}
+.hero-note{margin-top:14px;font-size:12px;color:rgba(255,255,255,.3);font-family:'Barlow Condensed';letter-spacing:.5px;text-transform:uppercase}
+.trust-strip{background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.06);padding:16px 28px;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;position:relative;z-index:2}
+.ti{display:flex;align-items:center;gap:7px;font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.8px;font-size:11px;color:rgba(255,255,255,.4)}
 
-.trust-strip{background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:18px 32px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;position:relative;z-index:2}
-.trust-item{display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.8px;font-size:12px;color:rgba(255,255,255,.45)}
-.trust-item .ti{font-size:16px}
-
-/* FUNNEL SECTION */
-.funnel-wrap{max-width:680px;margin:0 auto;padding:60px 20px 80px;position:relative;z-index:1}
-
-.progress-track{height:3px;background:var(--line);border-radius:2px;margin-bottom:40px;overflow:hidden}
-.progress-fill{height:100%;background:var(--red);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
-.step-label{display:flex;justify-content:space-between;font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1px;font-size:11px;color:var(--muted);margin-bottom:8px}
-
-.step{display:none;animation:fadeUp .3s ease}
-.step.active{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-
-.q-label{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1.5px;font-size:12px;color:var(--red);margin-bottom:10px}
-.q-text{font-family:'Bebas Neue';font-size:clamp(28px,5vw,42px);line-height:1.05;margin-bottom:8px;color:var(--ink)}
-.q-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.5}
-
-/* OPTION CARDS */
-.options{display:flex;flex-direction:column;gap:10px}
-.options.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.opt{background:var(--white);border:2px solid var(--line);border-radius:12px;padding:16px 20px;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:14px;text-align:left}
-.opt:hover{border-color:var(--red);background:#fff8f8;transform:translateX(3px)}
-.opt.sel{border-color:var(--red);background:#fff8f8}
-.opt .oi{width:36px;height:36px;border-radius:8px;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:.15s}
-.opt.sel .oi,.opt:hover .oi{background:rgba(232,37,26,.1)}
-.opt .ot{font-weight:700;font-size:15px;margin-bottom:2px}
-.opt .os{font-size:12px;color:var(--muted)}
-.opt .oc{margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
+/* FUNNEL */
+.funnel-wrap{max-width:640px;margin:0 auto;padding:52px 18px 80px}
+.prog-row{display:flex;justify-content:space-between;font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1px;font-size:10px;color:var(--muted);margin-bottom:6px}
+.prog-track{height:3px;background:var(--line);border-radius:2px;margin-bottom:36px;overflow:hidden}
+.prog-fill{height:100%;background:var(--red);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.step{display:none;animation:fu .28s ease}
+.step.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.q-tag{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1.5px;font-size:11px;color:var(--red);margin-bottom:8px}
+.q-head{font-family:'Bebas Neue';font-size:clamp(26px,5vw,40px);line-height:1.05;margin-bottom:6px}
+.q-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opts.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.opt{background:#fff;border:2px solid var(--line);border-radius:11px;padding:14px 17px;cursor:pointer;transition:.13s;display:flex;align-items:center;gap:12px;text-align:left}
+.opt:hover{border-color:var(--red);background:#fff9f9;transform:translateX(2px)}
+.opt.sel{border-color:var(--red);background:#fff9f9}
+.opt .oi{width:34px;height:34px;border-radius:7px;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.opt .ot{font-weight:700;font-size:14px;margin-bottom:1px}
+.opt .os{font-size:11px;color:var(--muted)}
+.opt .oc{margin-left:auto;width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;transition:.12s;display:flex;align-items:center;justify-content:center}
 .opt.sel .oc{background:var(--red);border-color:var(--red)}
-.opt.sel .oc::after{content:'✓';color:#fff;font-size:10px;font-weight:700}
-
-/* SLIDER */
-.slider-wrap{margin-bottom:8px}
-.slider-val{font-family:'Bebas Neue';font-size:48px;color:var(--red);line-height:1;margin-bottom:4px}
-.slider-val .sv-unit{font-size:22px;color:var(--muted);margin-left:2px}
-input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--line);outline:none;margin:16px 0}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--red);cursor:pointer;box-shadow:0 2px 8px rgba(232,37,26,.4)}
-.slider-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.5px}
-
-/* TEXT INPUT */
-.txt-inp{width:100%;background:var(--white);border:2px solid var(--line);border-radius:10px;padding:14px 16px;font-family:'Barlow';font-size:16px;color:var(--ink);transition:.15s;outline:none}
-.txt-inp:focus{border-color:var(--red)}
-.inp-row{display:flex;flex-direction:column;gap:10px}
-.inp-label{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1px;font-size:11px;color:var(--muted);margin-bottom:4px}
-
-/* NAV BUTTONS */
-.btn-row{display:flex;gap:10px;margin-top:28px;align-items:center}
-.btn-next{background:var(--red);color:#fff;border:none;padding:13px 28px;border-radius:8px;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.8px;font-size:16px;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:8px}
+.opt.sel .oc::after{content:'✓';color:#fff;font-size:9px;font-weight:700}
+.btn-row{display:flex;gap:9px;margin-top:24px;align-items:center}
+.btn-next{background:var(--red);color:#fff;border:none;padding:13px 26px;border-radius:8px;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.8px;font-size:15px;cursor:pointer;transition:.13s;display:flex;align-items:center;gap:7px}
 .btn-next:hover{background:var(--red2)}
-.btn-next:disabled{opacity:.35;cursor:not-allowed}
-.btn-back{background:none;border:2px solid var(--line);color:var(--muted);padding:13px 20px;border-radius:8px;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:14px;cursor:pointer;transition:.15s}
+.btn-next:disabled{opacity:.3;cursor:not-allowed}
+.btn-back{background:none;border:2px solid var(--line);color:var(--muted);padding:13px 18px;border-radius:8px;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:13px;cursor:pointer;transition:.13s}
 .btn-back:hover{border-color:var(--muted);color:var(--ink)}
+.inp-label{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1px;font-size:10px;color:var(--muted);margin-bottom:4px;display:block}
+.txti{width:100%;background:#fff;border:2px solid var(--line);border-radius:9px;padding:13px 14px;font-family:'Barlow';font-size:15px;color:var(--ink);outline:none;transition:.13s;margin-bottom:10px}
+.txti:focus{border-color:var(--red)}
+.txti.opt-field{opacity:.7}
+.fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 
-/* RESULT SCREEN */
-.result{display:none;animation:fadeUp .4s ease}
-.result.active{display:block}
-
-.result-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,37,26,.08);border:1px solid rgba(232,37,26,.2);border-radius:8px;padding:8px 16px;font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1px;font-size:12px;color:var(--red);margin-bottom:20px}
-
-.pkg-card{background:var(--white);border:2px solid var(--ink);border-radius:16px;padding:28px;margin-bottom:16px;position:relative;overflow:hidden}
+/* RESULT */
+.result{display:none;animation:fu .35s ease}
+.result.on{display:block}
+.result-top{background:var(--steel);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
+.result-top::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;border-radius:50%;background:rgba(232,37,26,.07);pointer-events:none}
+.result-top .rt-tag{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1.5px;font-size:11px;color:var(--red);margin-bottom:10px}
+.result-top h2{font-family:'Bebas Neue';font-size:clamp(28px,5vw,42px);line-height:1.05;margin-bottom:10px}
+.result-top p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;max-width:520px}
+.result-top .rt-note{margin-top:16px;background:rgba(232,37,26,.12);border:1px solid rgba(232,37,26,.25);border-radius:8px;padding:12px 14px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.5}
+.pkg-card{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:24px;margin-bottom:14px;position:relative;overflow:hidden}
 .pkg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--red)}
-.pkg-name{font-family:'Bebas Neue';font-size:36px;margin-bottom:4px}
-.pkg-tagline{color:var(--muted);font-size:14px;margin-bottom:20px}
-.pkg-price{display:flex;align-items:baseline;gap:8px;margin-bottom:20px}
-.pkg-price .setup{font-family:'Bebas Neue';font-size:48px;color:var(--ink)}
-.pkg-price .mo{font-family:'Bebas Neue';font-size:28px;color:var(--muted)}
-.pkg-price .mo-label{font-size:13px;color:var(--muted)}
-.pkg-includes{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
-.pkg-includes li{display:flex;align-items:flex-start;gap:8px;font-size:13px}
-.pkg-includes li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
-.pkg-why{background:var(--off);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.6;color:#444;border-left:3px solid var(--red)}
-.pkg-why strong{color:var(--ink)}
+.pkg-name{font-family:'Bebas Neue';font-size:34px;margin-bottom:3px}
+.pkg-tag{color:var(--muted);font-size:13px;margin-bottom:16px}
+.pkg-price{display:flex;align-items:baseline;gap:7px;margin-bottom:18px;flex-wrap:wrap}
+.pp-setup{font-family:'Bebas Neue';font-size:44px;color:var(--ink)}
+.pp-mo{font-family:'Bebas Neue';font-size:26px;color:var(--muted)}
+.pp-label{font-size:12px;color:var(--muted)}
+.pkg-inc{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px}
+.pkg-inc li{display:flex;align-items:flex-start;gap:7px;font-size:13px;line-height:1.4}
+.pkg-inc li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.pkg-why{background:var(--off);border-radius:8px;padding:13px 15px;font-size:13px;line-height:1.6;color:#444;border-left:3px solid var(--red)}
+.upsell-wrap{margin-bottom:14px}
+.upsell-label{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:1px;font-size:10px;color:var(--muted);margin:18px 0 8px}
+.ucard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 16px;display:flex;align-items:center;gap:11px;margin-bottom:8px}
+.ucard .ui{width:34px;height:34px;border-radius:7px;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ucard .ub{flex:1}
+.ucard .un{font-weight:700;font-size:13px;margin-bottom:1px}
+.ucard .ud{font-size:11px;color:var(--muted)}
+.ucard .up{font-family:'Barlow Condensed';font-weight:700;font-size:14px;color:var(--red);white-space:nowrap}
+.guarantee{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
+.gi{font-size:24px;margin-top:2px}
+.gb strong{display:block;font-size:13px;margin-bottom:3px}
+.gb span{font-size:12px;color:#555;line-height:1.5}
 
-.upsell-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:center;gap:14px}
-.upsell-card .uc-ico{width:38px;height:38px;border-radius:8px;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.upsell-card .uc-body{flex:1}
-.upsell-card .uc-name{font-weight:700;font-size:14px;margin-bottom:2px}
-.upsell-card .uc-desc{font-size:12px;color:var(--muted)}
-.upsell-card .uc-price{font-family:'Barlow Condensed';font-weight:700;font-size:16px;color:var(--red);white-space:nowrap}
+/* AUDIT BOX */
+.audit-box{background:var(--steel);color:#fff;border-radius:14px;padding:26px;margin-bottom:20px;position:relative;overflow:hidden}
+.audit-box::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(232,37,26,.06);pointer-events:none}
+.audit-box h3{font-family:'Bebas Neue';font-size:28px;margin-bottom:5px}
+.audit-box p{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:18px;line-height:1.5}
+.audit-inp{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:12px 13px;color:#fff;font-family:'Barlow';font-size:14px;width:100%;outline:none;transition:.13s;margin-bottom:9px}
+.audit-inp::placeholder{color:rgba(255,255,255,.28)}
+.audit-inp:focus{border-color:rgba(232,37,26,.45);background:rgba(255,255,255,.1)}
+.audit-btn{background:var(--red);color:#fff;border:none;padding:13px 22px;border-radius:8px;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.8px;font-size:14px;cursor:pointer;transition:.13s;width:100%;margin-top:4px}
+.audit-btn:hover{background:var(--red2)}
+.audit-done{display:none;text-align:center;padding:18px 0}
+.audit-done .adi{font-size:36px;margin-bottom:8px}
+.audit-done h4{font-family:'Bebas Neue';font-size:26px;color:#fff;margin-bottom:4px}
+.audit-done p{font-size:12px;color:rgba(255,255,255,.45)}
 
-/* AUDIT + BOOKING STEPS */
-.audit-box{background:var(--steel);color:var(--white);border-radius:16px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden}
-.audit-box::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(232,37,26,.08);pointer-events:none}
-.audit-box h3{font-family:'Bebas Neue';font-size:28px;margin-bottom:6px}
-.audit-box p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.5}
-.audit-fields{display:flex;flex-direction:column;gap:10px}
-.audit-fields input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 14px;color:var(--white);font-family:'Barlow';font-size:14px;outline:none;transition:.15s}
-.audit-fields input::placeholder{color:rgba(255,255,255,.3)}
-.audit-fields input:focus{border-color:rgba(232,37,26,.5);background:rgba(255,255,255,.1)}
-.audit-submit{background:var(--red);color:#fff;border:none;padding:13px 24px;border-radius:8px;font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.8px;font-size:15px;cursor:pointer;transition:.15s;width:100%;margin-top:6px}
-.audit-submit:hover{background:var(--red2)}
-.audit-sent{display:none;text-align:center;padding:20px}
-.audit-sent .as-ico{font-size:40px;margin-bottom:10px}
-.audit-sent h4{font-family:'Bebas Neue';font-size:28px;color:var(--white);margin-bottom:6px}
-.audit-sent p{font-size:13px;color:rgba(255,255,255,.5)}
+/* BOOKING */
+.book-section h3{font-family:'Bebas Neue';font-size:28px;margin-bottom:4px}
+.book-section p{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.5}
+.cal-opt{background:#fff;border:2px solid var(--line);border-radius:10px;padding:13px 16px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:.13s;text-decoration:none;color:var(--ink);margin-bottom:8px}
+.cal-opt:hover{border-color:var(--red);transform:translateX(2px)}
+.cal-opt .co-ico{font-size:19px}
+.cal-opt .co-b{flex:1}
+.cal-opt .co-t{font-weight:700;font-size:14px}
+.cal-opt .co-s{font-size:11px;color:var(--muted)}
+.cal-opt .co-a{color:var(--red);font-size:17px}
 
-.booking-section{margin-top:24px}
-.booking-section h3{font-family:'Bebas Neue';font-size:28px;margin-bottom:6px}
-.booking-section p{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.5}
-.cal-options{display:flex;flex-direction:column;gap:8px}
-.cal-opt{background:var(--white);border:2px solid var(--line);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:.15s;text-decoration:none;color:var(--ink)}
-.cal-opt:hover{border-color:var(--red);transform:translateX(3px)}
-.cal-opt .co-ico{font-size:20px}
-.cal-opt .co-body{flex:1}
-.cal-opt .co-title{font-weight:700;font-size:14px}
-.cal-opt .co-sub{font-size:12px;color:var(--muted)}
-.cal-opt .co-arr{color:var(--red);font-size:18px}
+/* OUTCOMES SECTION (replaces fake testimonials) */
+.outcomes{padding:52px 18px;background:#fff}
+.outcomes-inner{max-width:760px;margin:0 auto}
+.outcomes h2{font-family:'Bebas Neue';font-size:clamp(30px,5vw,46px);text-align:center;margin-bottom:6px}
+.outcomes-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:10px}
+.outcomes-note{text-align:center;font-size:13px;color:#999;font-style:italic;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
+.out-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.out-card{background:var(--off);border-radius:12px;padding:20px}
+.out-ico{font-size:26px;margin-bottom:10px}
+.out-title{font-weight:700;font-size:14px;margin-bottom:6px}
+.out-desc{font-size:12px;color:#555;line-height:1.6}
 
-/* GUARANTEE STRIP */
-.guarantee{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px;margin-top:24px}
-.guarantee .gi{font-size:28px}
-.guarantee .gb{font-size:13px;line-height:1.5;color:#555}
-.guarantee .gb strong{color:var(--ink);display:block;font-size:14px;margin-bottom:2px}
+footer{background:var(--steel);padding:26px 28px;text-align:center}
+footer p{font-size:11px;color:rgba(255,255,255,.25);font-family:'Barlow Condensed';letter-spacing:.4px}
+footer a{color:rgba(255,255,255,.35);text-decoration:none}
+footer a:hover{color:#fff}
 
-/* SOCIAL PROOF */
-.proof{padding:60px 20px;background:var(--white)}
-.proof-inner{max-width:800px;margin:0 auto}
-.proof h2{font-family:'Bebas Neue';font-size:clamp(32px,5vw,48px);text-align:center;margin-bottom:8px}
-.proof-sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:36px}
-.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.proof-card{background:var(--off);border-radius:12px;padding:20px}
-.pc-stars{color:var(--amber);font-size:14px;margin-bottom:10px}
-.pc-text{font-size:13px;line-height:1.6;color:#444;margin-bottom:12px}
-.pc-name{font-weight:700;font-size:13px}
-.pc-trade{font-size:11px;color:var(--muted);font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.5px}
-
-/* FOOTER */
-footer{background:var(--steel);padding:28px 32px;text-align:center}
-footer p{font-size:12px;color:rgba(255,255,255,.3);font-family:'Barlow Condensed';letter-spacing:.5px;text-transform:uppercase}
-footer a{color:rgba(255,255,255,.4);text-decoration:none}
-footer a:hover{color:var(--white)}
-
-@media(max-width:580px){
-  .options.grid{grid-template-columns:1fr}
-  .pkg-includes{grid-template-columns:1fr}
-  .trust-strip{gap:16px}
+@media(max-width:560px){
+  .opts.grid{grid-template-columns:1fr}
+  .pkg-inc{grid-template-columns:1fr}
+  .fields-grid{grid-template-columns:1fr}
   .btn-row{flex-direction:column;align-items:stretch}
-  .btn-next,.btn-back{text-align:center;justify-content:center}
+  .btn-next,.btn-back{justify-content:center;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <nav class="nav">
     <div class="logo">Precision<span>Pipeline</span></div>
-    <a href="#funnel" class="nav-cta">Free Audit →</a>
+    <a href="#funnel" class="nav-btn">Free Audit →</a>
   </nav>
   <div class="hero-body">
     <div class="hero-inner">
-      <div class="eyebrow">Perth Trades — Free Business Audit</div>
+      <div class="eyebrow">Perth Trades — Free Online Audit</div>
       <h1>Your Reviews Are Worth<span class="hl">More Than This.</span></h1>
-      <p class="hero-sub">500+ Perth tradies with great Google reviews and no proper website. Find out exactly what you're missing and what package makes sense for your budget.</p>
+      <p class="hero-sub">If you've got solid Google reviews but no proper website, you're leaving jobs on the table. Find out exactly what setup makes sense for your trade and budget.</p>
       <button class="hero-cta" onclick="document.getElementById('funnel').scrollIntoView({behavior:'smooth'})">
-        Get My Free Audit <span class="arr">→</span>
+        Get My Free Audit <span>→</span>
       </button>
-      <p class="hero-note">2 minutes · No sales pressure · Instant recommendation</p>
+      <p class="hero-note">9 questions · No sales pressure · Personalised recommendation</p>
     </div>
   </div>
   <div class="trust-strip">
-    <div class="trust-item"><span class="ti">⚡</span> 2-minute quiz</div>
-    <div class="trust-item"><span class="ti">🎯</span> Personalised package</div>
-    <div class="trust-item"><span class="ti">📋</span> Free audit included</div>
-    <div class="trust-item"><span class="ti">📅</span> Book a call if you want</div>
+    <div class="ti"><span>⚡</span> 2 minutes</div>
+    <div class="ti"><span>🎯</span> Personalised package</div>
+    <div class="ti"><span>📋</span> Free audit included</div>
+    <div class="ti"><span>📅</span> Book a call if you want</div>
   </div>
 </section>
 
-<!-- FUNNEL -->
 <section id="funnel" class="funnel-wrap">
+  <div class="prog-row"><span id="stepLabel">Step 1 of 9</span><span id="stepPct">0%</span></div>
+  <div class="prog-track"><div class="prog-fill" id="prog" style="width:0%"></div></div>
 
-  <div class="step-label">
-    <span id="stepNum">Step 1 of 8</span>
-    <span id="stepPct">0% complete</span>
-  </div>
-  <div class="progress-track"><div class="progress-fill" id="prog" style="width:0%"></div></div>
-
-  <!-- STEP 1: Business type -->
-  <div class="step active" id="s1">
-    <div class="q-label">Step 1 — Your Business</div>
-    <div class="q-text">What type of trade are you in?</div>
-    <div class="q-sub">This helps us match you with the right local strategy.</div>
-    <div class="options grid" id="s1opts">
-      <div class="opt" onclick="selOpt('s1','Plumber',this)"><div class="oi">🔧</div><div><div class="ot">Plumber</div><div class="os">Residential &amp; commercial</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s1','Electrician',this)"><div class="oi">⚡</div><div><div class="ot">Electrician</div><div class="os">Domestic &amp; industrial</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s1','Builder',this)"><div class="oi">🏗️</div><div><div class="ot">Builder</div><div class="os">New builds &amp; renos</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s1','Landscaper',this)"><div class="oi">🌿</div><div><div class="ot">Landscaper</div><div class="os">Garden &amp; outdoor</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s1','Painter',this)"><div class="oi">🎨</div><div><div class="ot">Painter</div><div class="os">Interior &amp; exterior</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s1','Concreter',this)"><div class="oi">🪨</div><div><div class="ot">Concreter</div><div class="os">Driveways &amp; slabs</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s1','Carpenter',this)"><div class="oi">🪵</div><div><div class="ot">Carpenter</div><div class="os">Fit-out &amp; joinery</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s1','Other Trade',this)"><div class="oi">🛠️</div><div><div class="ot">Other Trade</div><div class="os">Roofer, tiler, fencer…</div></div><div class="oc"></div></div>
+  <!-- S1: Trade type -->
+  <div class="step on" id="s1">
+    <div class="q-tag">Step 1 — Your Trade</div>
+    <div class="q-head">What type of trade are you in?</div>
+    <div class="q-sub">Helps us tailor the recommendation to your industry.</div>
+    <div class="opts grid">
+      <div class="opt" onclick="sel('s1','Plumber',this)"><div class="oi">🔧</div><div><div class="ot">Plumber</div><div class="os">Residential &amp; commercial</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s1','Electrician',this)"><div class="oi">⚡</div><div><div class="ot">Electrician</div><div class="os">Domestic &amp; industrial</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s1','Builder',this)"><div class="oi">🏗️</div><div><div class="ot">Builder</div><div class="os">New builds &amp; renos</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s1','Landscaper',this)"><div class="oi">🌿</div><div><div class="ot">Landscaper</div><div class="os">Garden &amp; outdoor</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s1','Painter',this)"><div class="oi">🎨</div><div><div class="ot">Painter</div><div class="os">Interior &amp; exterior</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s1','Concreter',this)"><div class="oi">🪨</div><div><div class="ot">Concreter</div><div class="os">Driveways &amp; slabs</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s1','Carpenter',this)"><div class="oi">🪵</div><div><div class="ot">Carpenter</div><div class="os">Fit-out &amp; joinery</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s1','Other',this)"><div class="oi">🛠️</div><div><div class="ot">Other Trade</div><div class="os">Roofer, tiler, fencer…</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-next" id="s1next" disabled onclick="next(2)">Next <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-next" id="s1n" disabled onclick="go(2)">Next →</button></div>
   </div>
 
-  <!-- STEP 2: Website -->
+  <!-- S2: Website status -->
   <div class="step" id="s2">
-    <div class="q-label">Step 2 — Online Presence</div>
-    <div class="q-text">Do you currently have a website?</div>
-    <div class="q-sub">Be honest — we've seen them all.</div>
-    <div class="options">
-      <div class="opt" onclick="selOpt('s2','none',this)"><div class="oi">❌</div><div><div class="ot">No website at all</div><div class="os">Facebook page or word-of-mouth only</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s2','bad',this)"><div class="oi">😬</div><div><div class="ot">Yes but it's outdated or poor quality</div><div class="os">Built years ago, not mobile-friendly, barely works</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s2','basic',this)"><div class="oi">🙂</div><div><div class="ot">Basic website — it's okay</div><div class="os">Has the essentials but doesn't generate enquiries</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s2','good',this)"><div class="oi">✅</div><div><div class="ot">Good website — happy with it</div><div class="os">Modern, mobile-friendly, gets results</div></div><div class="oc"></div></div>
+    <div class="q-tag">Step 2 — Online Presence</div>
+    <div class="q-head">Do you currently have a website?</div>
+    <div class="q-sub">Be straight with us — we've seen them all.</div>
+    <div class="opts">
+      <div class="opt" onclick="sel('s2','none',this)"><div class="oi">❌</div><div><div class="ot">No website at all</div><div class="os">Facebook only, or word of mouth</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s2','bad',this)"><div class="oi">😬</div><div><div class="ot">Yes — but it's outdated</div><div class="os">Built years ago, not mobile-friendly, barely works</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s2','basic',this)"><div class="oi">🙂</div><div><div class="ot">Basic — it's okay</div><div class="os">Has the info but doesn't generate enquiries</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s2','good',this)"><div class="oi">✅</div><div><div class="ot">Good — happy with it</div><div class="os">Modern, mobile, gets results</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-back" onclick="back(1)">← Back</button><button class="btn-next" id="s2next" disabled onclick="next(3)">Next <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-back" onclick="go(1)">← Back</button><button class="btn-next" id="s2n" disabled onclick="go(3)">Next →</button></div>
   </div>
 
-  <!-- STEP 3: Monthly turnover -->
+  <!-- S3: Business size (team, not turnover) -->
   <div class="step" id="s3">
-    <div class="q-label">Step 3 — Your Business Size</div>
-    <div class="q-text">Roughly how much does your business turn over per month?</div>
-    <div class="q-sub">This helps us recommend something that actually makes sense financially.</div>
-    <div class="slider-wrap">
-      <div class="slider-val" id="turnoverVal">$15,000<span class="sv-unit">/mo</span></div>
-      <input type="range" id="turnoverSlider" min="0" max="8" value="2" oninput="updateTurnover(this.value)">
-      <div class="slider-labels"><span>Under $5K</span><span>$10K</span><span>$25K</span><span>$50K</span><span>$100K+</span></div>
+    <div class="q-tag">Step 3 — Business Size</div>
+    <div class="q-head">How big is your operation?</div>
+    <div class="q-sub">Helps us match the right level of system for where you're at.</div>
+    <div class="opts">
+      <div class="opt" onclick="sel('s3','solo',this)"><div class="oi">👤</div><div><div class="ot">Solo operator</div><div class="os">Just me, maybe a subie</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s3','small',this)"><div class="oi">👥</div><div><div class="ot">2–5 person team</div><div class="os">Small crew, steady workflow</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s3','medium',this)"><div class="oi">🏢</div><div><div class="ot">6–10 person team</div><div class="os">Growing business, multiple jobs running</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s3','large',this)"><div class="oi">🏗️</div><div><div class="ot">10+ staff</div><div class="os">Established company with capacity</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-back" onclick="back(2)">← Back</button><button class="btn-next" onclick="next(4)">Next <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-back" onclick="go(2)">← Back</button><button class="btn-next" id="s3n" disabled onclick="go(4)">Next →</button></div>
   </div>
 
-  <!-- STEP 4: Job value -->
+  <!-- S4: Job value -->
   <div class="step" id="s4">
-    <div class="q-label">Step 4 — Job Value</div>
-    <div class="q-text">What's your average job worth?</div>
-    <div class="q-sub">A $300 job and a $15,000 job need very different marketing strategies.</div>
-    <div class="options">
-      <div class="opt" onclick="selOpt('s4','low',this)"><div class="oi">💲</div><div><div class="ot">Under $500</div><div class="os">Small repairs, call-outs, maintenance</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s4','mid',this)"><div class="oi">💰</div><div><div class="ot">$500 — $3,000</div><div class="os">Standard trade jobs</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s4','high',this)"><div class="oi">💎</div><div><div class="ot">$3,000 — $15,000</div><div class="os">Larger installs, renovations, projects</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s4','premium',this)"><div class="oi">🏆</div><div><div class="ot">$15,000+</div><div class="os">Full builds, major commercial work</div></div><div class="oc"></div></div>
+    <div class="q-tag">Step 4 — Job Value</div>
+    <div class="q-head">What's your average job worth?</div>
+    <div class="q-sub">A $300 call-out and a $15,000 renovation need completely different marketing.</div>
+    <div class="opts">
+      <div class="opt" onclick="sel('s4','low',this)"><div class="oi">💲</div><div><div class="ot">Under $500</div><div class="os">Small repairs, maintenance, call-outs</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s4','mid',this)"><div class="oi">💰</div><div><div class="ot">$500 — $3,000</div><div class="os">Standard trade jobs</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s4','high',this)"><div class="oi">💎</div><div><div class="ot">$3,000 — $15,000</div><div class="os">Larger installs, renovations, projects</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s4','premium',this)"><div class="oi">🏆</div><div><div class="ot">$15,000+</div><div class="os">Full builds, major projects</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-back" onclick="back(3)">← Back</button><button class="btn-next" id="s4next" disabled onclick="next(5)">Next <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-back" onclick="go(3)">← Back</button><button class="btn-next" id="s4n" disabled onclick="go(5)">Next →</button></div>
   </div>
 
-  <!-- STEP 5: Lead source -->
+  <!-- S5: Lead source -->
   <div class="step" id="s5">
-    <div class="q-label">Step 5 — Where Work Comes From</div>
-    <div class="q-text">Where do most of your jobs come from right now?</div>
-    <div class="q-sub">No wrong answers — this tells us where the gap is.</div>
-    <div class="options">
-      <div class="opt" onclick="selOpt('s5','wordofmouth',this)"><div class="oi">🗣️</div><div><div class="ot">Word of mouth / referrals</div><div class="os">Most work comes from people recommending me</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s5','google',this)"><div class="oi">🔍</div><div><div class="ot">Google search / reviews</div><div class="os">People find me on Google Maps or Search</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s5','facebook',this)"><div class="oi">📱</div><div><div class="ot">Facebook / social media</div><div class="os">Posts, groups, Facebook page enquiries</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s5','platforms',this)"><div class="oi">🏢</div><div><div class="ot">Hipages / ServiceSeeking / Airtasker</div><div class="os">Lead platforms — paying for enquiries</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s5','repeat',this)"><div class="oi">🔄</div><div><div class="ot">Repeat clients / ongoing contracts</div><div class="os">Regular commercial or maintenance work</div></div><div class="oc"></div></div>
+    <div class="q-tag">Step 5 — Where Work Comes From</div>
+    <div class="q-head">Where do most jobs come from right now?</div>
+    <div class="q-sub">No wrong answers — tells us where the gap is.</div>
+    <div class="opts">
+      <div class="opt" onclick="sel('s5','wom',this)"><div class="oi">🗣️</div><div><div class="ot">Word of mouth / referrals</div><div class="os">Most work from people recommending me</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s5','google',this)"><div class="oi">🔍</div><div><div class="ot">Google search / reviews</div><div class="os">People find me on Google Maps or Search</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s5','social',this)"><div class="oi">📱</div><div><div class="ot">Facebook / social media</div><div class="os">Posts, groups, Facebook page enquiries</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s5','platforms',this)"><div class="oi">🏢</div><div><div class="ot">Hipages / ServiceSeeking / Airtasker</div><div class="os">Paying for leads from platforms</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s5','repeat',this)"><div class="oi">🔄</div><div><div class="ot">Repeat clients / contracts</div><div class="os">Regular commercial or maintenance work</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-back" onclick="back(4)">← Back</button><button class="btn-next" id="s5next" disabled onclick="next(6)">Next <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-back" onclick="go(4)">← Back</button><button class="btn-next" id="s5n" disabled onclick="go(6)">Next →</button></div>
   </div>
 
-  <!-- STEP 6: Marketing budget -->
+  <!-- S6: Capacity (new — prevents pitching lead gen to busy tradies) -->
   <div class="step" id="s6">
-    <div class="q-label">Step 6 — Marketing Budget</div>
-    <div class="q-text">What could you comfortably spend on marketing per month?</div>
-    <div class="q-sub">This is just for the recommendation — no commitment required.</div>
-    <div class="options">
-      <div class="opt" onclick="selOpt('s6','none',this)"><div class="oi">🚫</div><div><div class="ot">Nothing right now</div><div class="os">Not ready for monthly marketing yet</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s6','low',this)"><div class="oi">💵</div><div><div class="ot">Up to $200/month</div><div class="os">Something small to start</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s6','mid',this)"><div class="oi">💳</div><div><div class="ot">$200 — $700/month</div><div class="os">Serious about growing online presence</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s6','high',this)"><div class="oi">📈</div><div><div class="ot">$700 — $1,500/month</div><div class="os">Ready to invest in lead generation</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s6','serious',this)"><div class="oi">🚀</div><div><div class="ot">$1,500+/month</div><div class="os">Established business wanting full pipeline</div></div><div class="oc"></div></div>
+    <div class="q-tag">Step 6 — Capacity</div>
+    <div class="q-head">If 5–10 extra quote requests came in this week, could you handle them?</div>
+    <div class="q-sub">This changes which setup actually makes sense for you.</div>
+    <div class="opts">
+      <div class="opt" onclick="sel('s6','yes_more',this)"><div class="oi">💪</div><div><div class="ot">Yes — need more work now</div><div class="os">Ready to go, could handle the volume</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s6','yes_quality',this)"><div class="oi">🎯</div><div><div class="ot">Yes — but only quality jobs</div><div class="os">Busy enough but want better work</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s6','maybe',this)"><div class="oi">🤔</div><div><div class="ot">Maybe — depends on the job</div><div class="os">Selective, looking at the right fit</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s6','no_prof',this)"><div class="oi">🎨</div><div><div class="ot">No — just want to look more professional</div><div class="os">Not chasing volume, want a proper presence</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-back" onclick="back(5)">← Back</button><button class="btn-next" id="s6next" disabled onclick="next(7)">Next <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-back" onclick="go(5)">← Back</button><button class="btn-next" id="s6n" disabled onclick="go(7)">Next →</button></div>
   </div>
 
-  <!-- STEP 7: Goal -->
+  <!-- S7: Budget (reworded) -->
   <div class="step" id="s7">
-    <div class="q-label">Step 7 — Your Main Goal</div>
-    <div class="q-text">What do you actually want most right now?</div>
-    <div class="q-sub">Pick the one that fits best — we'll tailor the recommendation.</div>
-    <div class="options">
-      <div class="opt" onclick="selOpt('s7','professional',this)"><div class="oi">🎯</div><div><div class="ot">Look more professional online</div><div class="os">Proper website so I can send clients somewhere</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s7','google',this)"><div class="oi">🔍</div><div><div class="ot">Rank better on Google</div><div class="os">Show up when people search my trade in Perth</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s7','leads',this)"><div class="oi">📥</div><div><div class="ot">Get more quote requests</div><div class="os">More enquiries coming in this month</div></div><div class="oc"></div></div>
-      <div class="opt" onclick="selOpt('s7','full',this)"><div class="oi">⚙️</div><div><div class="ot">Full system — website, SEO and leads</div><div class="os">Set up the whole thing properly</div></div><div class="oc"></div></div>
+    <div class="q-tag">Step 7 — Marketing Investment</div>
+    <div class="q-head">If the plan made sense, what monthly range would you be open to?</div>
+    <div class="q-sub">No commitment — just helps us recommend something realistic.</div>
+    <div class="opts">
+      <div class="opt" onclick="sel('s7','none',this)"><div class="oi">🚫</div><div><div class="ot">Just need a website first</div><div class="os">Not ready for monthly marketing yet</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s7','low',this)"><div class="oi">💵</div><div><div class="ot">Up to $200/month</div><div class="os">Starting small, see how it goes</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s7','mid',this)"><div class="oi">💳</div><div><div class="ot">$200 — $700/month</div><div class="os">Serious about growing online presence</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s7','high',this)"><div class="oi">📈</div><div><div class="ot">$700 — $1,500/month</div><div class="os">Ready to invest in lead generation</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s7','serious',this)"><div class="oi">🚀</div><div><div class="ot">$1,500+/month</div><div class="os">Established business, want the full setup</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-back" onclick="back(6)">← Back</button><button class="btn-next" id="s7next" disabled onclick="next(8)">Next <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-back" onclick="go(6)">← Back</button><button class="btn-next" id="s7n" disabled onclick="go(8)">Next →</button></div>
   </div>
 
-  <!-- STEP 8: Contact -->
+  <!-- S8: Goal -->
   <div class="step" id="s8">
-    <div class="q-label">Step 8 — Almost Done</div>
-    <div class="q-text">Where should we send your free audit?</div>
-    <div class="q-sub">We'll generate your personalised recommendation and audit report straight away.</div>
-    <div class="inp-row">
-      <div><div class="inp-label">Your Name</div><input class="txt-inp" id="leadName" placeholder="Dave Romano" oninput="checkS8()"></div>
-      <div><div class="inp-label">Business Name</div><input class="txt-inp" id="leadBiz" placeholder="Romano Plumbing" oninput="checkS8()"></div>
-      <div><div class="inp-label">Mobile Number</div><input class="txt-inp" id="leadPhone" type="tel" placeholder="0412 345 678" oninput="checkS8()"></div>
-      <div><div class="inp-label">Email (optional — for audit report)</div><input class="txt-inp" id="leadEmail" type="email" placeholder="dave@romanoplumbing.com.au"></div>
+    <div class="q-tag">Step 8 — Main Goal</div>
+    <div class="q-head">What do you actually want most right now?</div>
+    <div class="q-sub">Pick the one that fits closest.</div>
+    <div class="opts">
+      <div class="opt" onclick="sel('s8','professional',this)"><div class="oi">🎯</div><div><div class="ot">Look more professional online</div><div class="os">A proper website I can send clients to</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s8','google',this)"><div class="oi">🔍</div><div><div class="ot">Rank better on Google</div><div class="os">Show up when people search my trade in Perth</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s8','leads',this)"><div class="oi">📥</div><div><div class="ot">Get more quote requests</div><div class="os">More enquiries coming in this month</div></div><div class="oc"></div></div>
+      <div class="opt" onclick="sel('s8','full',this)"><div class="oi">⚙️</div><div><div class="ot">Full system — website, SEO and leads</div><div class="os">Set it up properly end to end</div></div><div class="oc"></div></div>
     </div>
-    <div class="btn-row"><button class="btn-back" onclick="back(7)">← Back</button><button class="btn-next" id="s8next" disabled onclick="showResult()">See My Recommendation <span>→</span></button></div>
+    <div class="btn-row"><button class="btn-back" onclick="go(7)">← Back</button><button class="btn-next" id="s8n" disabled onclick="go(9)">Next →</button></div>
+  </div>
+
+  <!-- S9: Contact + email setup -->
+  <div class="step" id="s9">
+    <div class="q-tag">Step 9 — Almost Done</div>
+    <div class="q-head">Where should we send the recommendation?</div>
+    <div class="q-sub">We'll review your answers and send back the best-fit website and marketing setup for your trade.</div>
+    <div class="fields-grid">
+      <div><label class="inp-label">Your Name *</label><input class="txti" id="fName" placeholder="Dave Romano" oninput="chk9()"></div>
+      <div><label class="inp-label">Business Name *</label><input class="txti" id="fBiz" placeholder="Romano Plumbing" oninput="chk9()"></div>
+    </div>
+    <label class="inp-label">Mobile Number *</label>
+    <input class="txti" id="fPhone" type="tel" placeholder="0412 345 678" oninput="chk9()">
+    <label class="inp-label">Email (for the audit report)</label>
+    <input class="txti opt-field" id="fEmail" type="email" placeholder="dave@romanoplumbing.com.au">
+    <label class="inp-label">Website URL (if you have one)</label>
+    <input class="txti opt-field" id="fWeb" placeholder="www.romanoplumbing.com.au">
+    <div style="margin-top:6px;margin-bottom:16px">
+      <label class="inp-label" style="margin-bottom:8px">Do you have a professional business email? *</label>
+      <div class="opts">
+        <div class="opt" onclick="sel('s9','yes_email',this)" style="padding:11px 14px"><div class="oi" style="width:28px;height:28px;font-size:14px">✅</div><div><div class="ot" style="font-size:13px">Yes — name@business.com.au</div></div><div class="oc"></div></div>
+        <div class="opt" onclick="sel('s9','gmail',this)" style="padding:11px 14px"><div class="oi" style="width:28px;height:28px;font-size:14px">📧</div><div><div class="ot" style="font-size:13px">No — using Gmail / Hotmail / Outlook</div></div><div class="oc"></div></div>
+        <div class="opt" onclick="sel('s9','need_email',this)" style="padding:11px 14px"><div class="oi" style="width:28px;height:28px;font-size:14px">🆘</div><div><div class="ot" style="font-size:13px">Need help setting one up</div></div><div class="oc"></div></div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn-back" onclick="go(8)">← Back</button><button class="btn-next" id="s9n" disabled onclick="showResult()">See My Recommendation →</button></div>
   </div>
 
   <!-- RESULT -->
   <div class="result" id="result">
+    <div class="result-top">
+      <div class="rt-tag">✓ Based on your answers</div>
+      <h2 id="rHead">You look like a strong fit.</h2>
+      <p id="rSub">We'll review your business online and come back with a specific recommendation, mockup and pricing — no guesswork.</p>
+      <div class="rt-note" id="rNote"></div>
+    </div>
 
-    <div class="result-badge">✓ Your Personalised Recommendation</div>
-
-    <!-- Package recommendation -->
     <div class="pkg-card" id="pkgCard">
-      <div class="pkg-name" id="pkgName">Website Launch</div>
-      <div class="pkg-tagline" id="pkgTagline">Best starting point for your business</div>
-      <div class="pkg-price">
-        <span class="setup" id="pkgSetup">$997</span>
-        <span class="mo" id="pkgMo">+ $99</span>
-        <span class="mo-label">/month</span>
-      </div>
-      <ul class="pkg-includes" id="pkgIncludes"></ul>
+      <div class="pkg-name" id="pkgName"></div>
+      <div class="pkg-tag" id="pkgTag"></div>
+      <div class="pkg-price"><span class="pp-setup" id="pkgSetup"></span><span class="pp-mo" id="pkgMo"></span><span class="pp-label">/month</span></div>
+      <ul class="pkg-inc" id="pkgInc"></ul>
       <div class="pkg-why" id="pkgWhy"></div>
     </div>
 
-    <!-- Upsells -->
-    <div id="upsells"></div>
+    <div class="upsell-wrap" id="upsells"></div>
 
-    <!-- Guarantee -->
     <div class="guarantee">
       <div class="gi">🤝</div>
-      <div class="gb"><strong>No lock-in. No pressure.</strong>If after 90 days you're not happy with the results, we'll refund your last month. We only win when you win.</div>
+      <div class="gb"><strong>No lock-in. No pressure.</strong><span>If after 90 days you're not seeing results, we'll refund your last month. We only win when you win.</span></div>
     </div>
 
     <!-- AUDIT REQUEST -->
-    <div class="audit-box" style="margin-top:28px">
+    <div class="audit-box">
       <h3>Get Your Free Audit Report</h3>
-      <p>We'll analyse <span id="auditBiz">your business</span> and send back a specific breakdown of what you're missing online — and exactly what to fix first.</p>
+      <p>We'll review <span id="auditBiz">your business</span> online and send back a breakdown of exactly what you're missing — and the priority order to fix it.</p>
       <div id="auditForm">
-        <div class="audit-fields">
-          <input id="auditPhone" placeholder="Confirm your mobile number" type="tel">
-          <input id="auditEmail" placeholder="Email for the audit report">
-        </div>
-        <button class="audit-submit" onclick="submitAudit()">Send Me the Free Audit →</button>
+        <input class="audit-inp" id="aPhone" placeholder="Confirm your mobile number" type="tel">
+        <input class="audit-inp" id="aEmail" placeholder="Email for the audit report">
+        <button class="audit-btn" onclick="submitAudit()">Send Me the Free Audit →</button>
       </div>
-      <div class="audit-sent" id="auditSent">
-        <div class="as-ico">📋</div>
-        <h4>Audit Requested!</h4>
-        <p>We'll review your business online and send back your personalised audit within 24 hours.</p>
+      <div class="audit-done" id="auditDone">
+        <div class="adi">📋</div>
+        <h4>Audit Requested</h4>
+        <p>We'll review your business and send back your personalised report within 24 hours.</p>
       </div>
     </div>
 
     <!-- BOOKING -->
-    <div class="booking-section">
+    <div class="book-section" style="margin-top:4px">
       <h3>Book a Free 15-Minute Call</h3>
-      <p>No hard sell. We'll walk through the audit together and answer any questions. Takes 15 minutes max.</p>
-      <div class="cal-options">
-        <a href="https://calendly.com/yourusername/15min" target="_blank" class="cal-opt" id="calLink1">
-          <span class="co-ico">📅</span>
-          <div class="co-body"><div class="co-title">Book via Calendly</div><div class="co-sub">Pick a time that suits you</div></div>
-          <span class="co-arr">→</span>
-        </a>
-        <a href="sms:+61400000000" class="cal-opt" id="smsLink">
-          <span class="co-ico">💬</span>
-          <div class="co-body"><div class="co-title">Text us instead</div><div class="co-sub">Reply and we'll sort a time</div></div>
-          <span class="co-arr">→</span>
-        </a>
-      </div>
+      <p>No hard sell. We walk through the audit together, answer questions, and only move forward if it makes sense. 15 minutes max.</p>
+      <a href="https://calendly.com/yourusername/15min" target="_blank" class="cal-opt" id="calLink">
+        <span class="co-ico">📅</span>
+        <div class="co-b"><div class="co-t">Book via Calendly</div><div class="co-s">Pick a time that suits you</div></div>
+        <span class="co-a">→</span>
+      </a>
+      <a href="sms:+61400000000" class="cal-opt" id="smsLink">
+        <span class="co-ico">💬</span>
+        <div class="co-b"><div class="co-t">Text us instead</div><div class="co-s">Reply and we'll sort a time</div></div>
+        <span class="co-a">→</span>
+      </a>
     </div>
-
   </div>
-
 </section>
 
-<!-- SOCIAL PROOF -->
-<section class="proof">
-  <div class="proof-inner">
-    <h2>Perth Tradies. Real Results.</h2>
-    <p class="proof-sub">What happens when you get the setup right.</p>
-    <div class="proof-grid">
-      <div class="proof-card">
-        <div class="pc-stars">★★★★★</div>
-        <p class="pc-text">"Had 127 Google reviews and zero website. Within a week of launching I had three new quote requests from Google."</p>
-        <div class="pc-name">Dave R.</div><div class="pc-trade">Plumber · Bayswater</div>
+<!-- OUTCOMES (replaces fake testimonials) -->
+<section class="outcomes">
+  <div class="outcomes-inner">
+    <h2>What the System Is Built to Fix</h2>
+    <p class="outcomes-sub">Example outcomes for Perth trades with strong reviews and weak online presence</p>
+    <p class="outcomes-note">These are the gaps we find most often and the results a proper setup is built to deliver. Once we have real client results, they'll go here.</p>
+    <div class="out-grid">
+      <div class="out-card">
+        <div class="out-ico">🔍</div>
+        <div class="out-title">Getting found on Google</div>
+        <div class="out-desc">Trades with 50+ reviews and no website are invisible to people searching. A properly built site with local SEO fixes that directly.</div>
       </div>
-      <div class="proof-card">
-        <div class="pc-stars">★★★★★</div>
-        <p class="pc-text">"I was paying Hipages $400/month for dodgy leads. Now my own website gets me better enquiries for less than half that."</p>
-        <div class="pc-name">Sarah K.</div><div class="pc-trade">Landscaper · Morley</div>
+      <div class="out-card">
+        <div class="out-ico">📥</div>
+        <div class="out-title">Direct quote requests</div>
+        <div class="out-desc">A website with a proper contact form and quote system replaces the need to pay Hipages or ServiceSeeking for leads.</div>
       </div>
-      <div class="proof-card">
-        <div class="pc-stars">★★★★★</div>
-        <p class="pc-text">"Professional, fast and they actually know what tradies need. Not some generic template — they made it look like our business."</p>
-        <div class="pc-name">Marcus T.</div><div class="pc-trade">Electrician · Fremantle</div>
+      <div class="out-card">
+        <div class="out-ico">⭐</div>
+        <div class="out-title">Turning reviews into trust</div>
+        <div class="out-desc">Strong Google reviews become a powerful sales tool when they're showcased on a professional site — not buried on a map listing.</div>
+      </div>
+      <div class="out-card">
+        <div class="out-ico">📧</div>
+        <div class="out-title">Looking like a real business</div>
+        <div class="out-desc">A professional email, proper website and Google Business Profile makes quoting and follow-up instantly more credible.</div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Precision Pipeline · Precision International Trading Pty Ltd · ABN 41 687 738 610 · Perth, WA · <a href="mailto:hello@precisiontrading.com.au">hello@precisiontrading.com.au</a></p>
+  <p>© 2026 Precision Pipeline · Precision International Trading Pty Ltd · ABN 41 687 738 610 · Perth WA · <a href="mailto:hello@precisiontrading.com.au">hello@precisiontrading.com.au</a></p>
 </footer>
 
 <script>
-/* ============ STATE ============ */
-const A={trade:'',website:'',turnover:2,jobValue:'',leadSource:'',budget:'',goal:'',name:'',biz:'',phone:'',email:''};
-const TURNOVER_VALS=['Under $5K','$5K','$10K','$15K','$25K','$40K','$60K','$80K','$100K+'];
-const TURNOVER_NUMS=[2500,5000,10000,15000,25000,40000,60000,80000,100000];
-let currentStep=1;const TOTAL=8;
+const TOTAL=9;
+let step=1;
+const A={trade:'',website:'',size:'',jobValue:'',source:'',capacity:'',budget:'',goal:'',email_setup:'',name:'',biz:'',phone:'',email:'',web:''};
 
-/* ============ PACKAGES ============ */
 const PKGS={
-  launch:{
-    name:'Website Launch',
-    tagline:'Get online properly and start capturing enquiries',
-    setup:'$997',mo:'+ $99',
-    includes:['5-page professional website','Mobile-first design','Contact & quote forms','Google Business Profile setup','Review showcase','Hosting & domain included','Monthly updates','1 business email'],
-    why:(a)=>`You've got <strong>great Google reviews</strong> but nowhere to send people. A proper website turns those reviews into enquiries. We'd start here, get it live within 2 weeks, then add the marketing layer once it's converting.`
-  },
-  local:{
-    name:'Local Presence',
-    tagline:'Get found by more people in your suburb',
-    setup:'$997',mo:'+ $299',
-    includes:['Everything in Website Launch','Google Business Profile management','Monthly Google posts','Review request system','Local SEO foundations','Monthly performance report','Suburb targeting','Competitor tracking'],
-    why:(a)=>`You're already getting work from word-of-mouth — which means your reputation is solid. The gap is that people searching for your trade in Perth <strong>can't find you</strong>. This fixes that without needing ad spend.`
-  },
-  seo:{
-    name:'SEO Growth',
-    tagline:'Rank on Google for the jobs you actually want',
-    setup:'$997',mo:'+ $699',
-    includes:['Everything in Local Presence','Service page optimisation','Suburb/location pages','Google Search Console','Monthly SEO report','Keyword targeting','Content updates','Backlink building'],
-    why:(a)=>`With your job value and turnover, one extra job per month from Google more than pays for this. We target the specific search terms people use when looking for ${a.trade.toLowerCase()||'your trade'} in Perth and surrounding suburbs.`
-  },
-  leadgen:{
-    name:'Lead Generation',
-    tagline:'Quote requests coming in this month',
-    setup:'$997',mo:'+ $999',
-    includes:['Everything in SEO Growth','Google Ads setup & management','Dedicated landing page','Call tracking','Conversion tracking','CRM lead capture','Monthly reporting','Ongoing optimisation'],
-    why:(a)=>`Your average job value makes paid advertising worthwhile. You could get your first enquiry within 48 hours of going live. <strong>Note:</strong> ad spend ($500–$1,500/month) is paid direct to Google — separate from our management fee.`
-  },
-  dominator:{
-    name:'Dominator',
-    tagline:'Full pipeline — website, SEO, ads, CRM, automation',
-    setup:'$1,997',mo:'+ $2,499',
-    includes:['Everything in Lead Gen','Meta Ads (Facebook/Instagram)','CRM & follow-up automation','AI chatbot/receptionist','Review automation','Up to 5 business emails','Monthly strategy session','Full reporting dashboard'],
-    why:(a)=>`Your business has the turnover and job value to justify the full stack. This is for operators who want to <strong>own their market</strong> — not just have a website, but a complete lead and client system.`
-  }
+  launch:{name:'Website Launch',tag:'Get online properly and start capturing enquiries',setup:'$997',mo:'+ $99',
+    inc:['5-page professional website','Mobile-first design','Contact & quote forms','Google Business Profile setup','Review showcase','Hosting & domain included','Monthly updates','1 business email'],
+    why:(a)=>`You've got <strong>good Google reviews but no online destination</strong> for them. A proper website turns that reputation into direct enquiries — without needing ad spend. We'd get this live in under 2 weeks.`},
+  local:{name:'Local Presence',tag:'Get found in your suburb, look more professional',setup:'$997',mo:'+ $299',
+    inc:['Everything in Website Launch','Google Business Profile management','Monthly Google posts','Review request system','Local SEO foundations','Suburb targeting','Competitor tracking','Monthly report'],
+    why:(a)=>`You're getting work from word-of-mouth which means your reputation is solid. The gap is that <strong>people searching for a ${a.trade.toLowerCase()||'tradie'} in Perth can't find you</strong>. This fixes that without needing paid ads.`},
+  seo:{name:'SEO Growth',tag:'Rank on Google for the jobs you actually want',setup:'$997',mo:'+ $699',
+    inc:['Everything in Local Presence','Service page optimisation','Suburb/location pages','Google Search Console','Keyword targeting','Content updates','Monthly SEO report','Backlink building'],
+    why:(a)=>`With your job value, <strong>one extra job per month from Google pays for this</strong>. We target the search terms people use when looking for ${a.trade.toLowerCase()||'your trade'} in Perth and surrounding suburbs.`},
+  leadgen:{name:'Lead Generation',tag:'Quote requests coming in within weeks',setup:'$997',mo:'+ $999',
+    inc:['Everything in SEO Growth','Google Ads setup & management','Dedicated landing page','Call tracking','Conversion tracking','CRM lead capture','Monthly reporting','Ongoing optimisation'],
+    why:(a)=>`Your job value makes paid advertising worthwhile. <strong>You could get your first enquiry within 48 hours</strong> of going live. Note: ad spend ($500–$1,500/mo) is paid direct to Google — separate from our fee.`},
+  dominator:{name:'Dominator',tag:'Full pipeline — website, SEO, ads, CRM, automation',setup:'$1,997',mo:'+ $2,499',
+    inc:['Everything in Lead Gen','Meta Ads management','CRM & follow-up automation','AI chatbot/receptionist','Review automation','Up to 5 business emails','Monthly strategy session','Full reporting'],
+    why:(a)=>`For an established business with your capacity, the full stack makes sense. <strong>This is about owning your market</strong> — not just a website, but a complete lead and client system running on autopilot.`}
 };
 
-/* ============ SCORING ============ */
-function getPackage(){
-  const{website,budget,goal,jobValue,turnover}=A;
-  const tv=TURNOVER_NUMS[turnover]||0;
-  // Dominator
-  if(budget==='serious'&&tv>=40000&&jobValue==='premium')return 'dominator';
+function score(){
+  const{website,size,jobValue,capacity,budget,goal}=A;
+  if(budget==='serious'&&(size==='large'||size==='medium')&&(jobValue==='premium'||jobValue==='high'))return 'dominator';
   if(budget==='serious'&&goal==='full')return 'dominator';
-  // Lead Gen
-  if(budget==='high'||budget==='serious')if(goal==='leads'||goal==='full')return 'leadgen';
-  if(goal==='leads'&&(jobValue==='high'||jobValue==='premium')&&budget!=='none'&&budget!=='low')return 'leadgen';
-  // SEO Growth
-  if(budget==='mid'||budget==='high')if(goal==='google'||goal==='full')return 'seo';
-  if(goal==='google'&&tv>=15000)return 'seo';
-  // Local Presence
+  if(capacity==='no_prof')return 'launch';
+  if((budget==='high'||budget==='serious')&&(goal==='leads'||goal==='full')&&capacity!=='no_prof')return 'leadgen';
+  if(goal==='leads'&&(jobValue==='high'||jobValue==='premium')&&budget!=='none'&&budget!=='low'&&capacity!=='no_prof')return 'leadgen';
+  if((budget==='mid'||budget==='high')&&(goal==='google'||goal==='full'))return 'seo';
+  if(goal==='google'&&(size==='medium'||size==='large'))return 'seo';
   if(website==='basic'||website==='good')return 'local';
   if(budget==='low'&&goal!=='leads')return 'local';
-  if(goal==='google'&&budget!=='none')return 'local';
-  // Default: Website Launch
   return 'launch';
 }
 
 function getUpsells(pkg){
-  const all=['launch','local','seo','leadgen','dominator'];
-  const idx=all.indexOf(pkg);
-  const next=all[idx+1];
-  const upsellData={
-    local:{ico:'🔍',name:'Add SEO Growth',desc:'Start ranking for your trade in Perth suburbs',price:'$699/mo'},
-    seo:{ico:'📥',name:'Add Lead Generation',desc:'Google Ads on top of your SEO for faster results',price:'$999/mo + ad spend'},
-    leadgen:{ico:'🚀',name:'Upgrade to Dominator',desc:'Add Meta Ads, CRM automation and full pipeline',price:'$2,499/mo + ad spend'},
-    addons:[
-      {ico:'📧',name:'Business Email Setup',desc:'Professional email like dave@yoursite.com.au',price:'$199 once'},
-      {ico:'⭐',name:'Review System',desc:'Automated review requests after every job',price:'$49/mo'},
-    ]
-  };
-  let html='';
-  if(next&&upsellData[next]){
-    const u=upsellData[next];
-    html+=`<div style="font-family:\'Barlow Condensed\';text-transform:uppercase;letter-spacing:1px;font-size:11px;color:var(--muted);margin:20px 0 10px">Optional Add-Ons</div>`;
-    html+=`<div class="upsell-card"><div class="uc-ico">${u.ico}</div><div class="uc-body"><div class="uc-name">${u.name}</div><div class="uc-desc">${u.desc}</div></div><div class="uc-price">${u.price}</div></div>`;
-  }
-  upsellData.addons.forEach(u=>{
-    html+=`<div class="upsell-card"><div class="uc-ico">${u.ico}</div><div class="uc-body"><div class="uc-name">${u.name}</div><div class="uc-desc">${u.desc}</div></div><div class="uc-price">${u.price}</div></div>`;
-  });
-  return html;
+  const ladder=['launch','local','seo','leadgen','dominator'];
+  const next=ladder[ladder.indexOf(pkg)+1];
+  const map={local:{ico:'🔍',n:'Add Local Presence',d:'GBP management, local SEO, suburb targeting',p:'$299/mo'},seo:{ico:'📊',n:'Add SEO Growth',d:'Start ranking for your trade in Perth suburbs',p:'$699/mo'},leadgen:{ico:'📥',n:'Add Lead Generation',d:'Google Ads for faster results on top of SEO',p:'$999/mo + ad spend'},dominator:{ico:'🚀',n:'Upgrade to Dominator',d:'Meta Ads, CRM automation and full pipeline',p:'$2,499/mo'}};
+  let h='<div class="upsell-label">Optional Add-Ons</div>';
+  if(next&&map[next]){const u=map[next];h+=uc(u.ico,u.n,u.d,u.p);}
+  if(A.email_setup==='gmail'||A.email_setup==='need_email')h+=uc('📧','Professional Email Setup','name@yourbusiness.com.au — looks credible instantly','$199 once');
+  h+=uc('⭐','Review System','Automated review requests after every job','$49/mo');
+  return h;
 }
+function uc(i,n,d,p){return `<div class="ucard"><div class="ui">${i}</div><div class="ub"><div class="un">${n}</div><div class="ud">${d}</div></div><div class="up">${p}</div></div>`;}
 
-/* ============ NAVIGATION ============ */
-function next(n){
-  document.getElementById('s'+currentStep).classList.remove('active');
-  currentStep=n;
-  document.getElementById('s'+n).classList.add('active');
-  updateProgress();
-  window.scrollTo({top:document.getElementById('funnel').offsetTop-20,behavior:'smooth'});
+/* NAV */
+function go(n){
+  document.getElementById('s'+step).classList.remove('on');
+  step=n;
+  const el=document.getElementById('s'+n);
+  if(el)el.classList.add('on');
+  updProg();
+  document.getElementById('funnel').scrollIntoView({behavior:'smooth',block:'start'});
 }
-function back(n){
-  document.getElementById('s'+currentStep).classList.remove('active');
-  currentStep=n;
-  document.getElementById('s'+n).classList.add('active');
-  updateProgress();
-  window.scrollTo({top:document.getElementById('funnel').offsetTop-20,behavior:'smooth'});
-}
-function updateProgress(){
-  const pct=Math.round(((currentStep-1)/TOTAL)*100);
+function updProg(){
+  const pct=Math.round(((step-1)/TOTAL)*100);
   document.getElementById('prog').style.width=pct+'%';
-  document.getElementById('stepNum').textContent='Step '+currentStep+' of '+TOTAL;
-  document.getElementById('stepPct').textContent=pct+'% complete';
+  document.getElementById('stepLabel').textContent='Step '+step+' of '+TOTAL;
+  document.getElementById('stepPct').textContent=pct+'%';
 }
 
-/* ============ OPTION SELECT ============ */
-function selOpt(step,val,el){
-  document.querySelectorAll('#s'+step+' .opt').forEach(o=>o.classList.remove('sel'));
+/* SELECTION */
+function sel(s,val,el){
+  document.querySelectorAll('#'+s+' .opt').forEach(o=>o.classList.remove('sel'));
   el.classList.add('sel');
-  const map={s1:'trade',s2:'website',s4:'jobValue',s5:'leadSource',s6:'budget',s7:'goal'};
-  if(map[step])A[map[step]]=val;
-  const btn=document.getElementById(step+'next');
+  const map={s1:'trade',s2:'website',s3:'size',s4:'jobValue',s5:'source',s6:'capacity',s7:'budget',s8:'goal',s9:'email_setup'};
+  if(map[s])A[map[s]]=val;
+  const btn=document.getElementById(s+'n');
   if(btn)btn.disabled=false;
 }
 
-function updateTurnover(v){
-  A.turnover=parseInt(v);
-  const labels=['Under $5K/mo','$5K/mo','$10K/mo','$15K/mo','$25K/mo','$40K/mo','$60K/mo','$80K/mo','$100K+/mo'];
-  document.getElementById('turnoverVal').innerHTML=labels[v]+'<span class="sv-unit"></span>';
+function chk9(){
+  const ok=document.getElementById('fName').value.trim()&&document.getElementById('fBiz').value.trim()&&document.getElementById('fPhone').value.trim()&&A.email_setup;
+  document.getElementById('s9n').disabled=!ok;
 }
 
-function checkS8(){
-  const ok=document.getElementById('leadName').value.trim()&&document.getElementById('leadBiz').value.trim()&&document.getElementById('leadPhone').value.trim();
-  document.getElementById('s8next').disabled=!ok;
-}
-
-/* ============ RESULT ============ */
+/* RESULT */
 function showResult(){
-  A.name=document.getElementById('leadName').value.trim();
-  A.biz=document.getElementById('leadBiz').value.trim();
-  A.phone=document.getElementById('leadPhone').value.trim();
-  A.email=document.getElementById('leadEmail').value.trim();
-
-  // Hide all steps
-  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
-  // Show result
-  document.getElementById('result').classList.add('active');
-  // Update progress to 100%
+  A.name=document.getElementById('fName').value.trim();
+  A.biz=document.getElementById('fBiz').value.trim();
+  A.phone=document.getElementById('fPhone').value.trim();
+  A.email=document.getElementById('fEmail').value.trim();
+  A.web=document.getElementById('fWeb').value.trim();
+  document.getElementById('s9').classList.remove('on');
+  document.getElementById('result').classList.add('on');
   document.getElementById('prog').style.width='100%';
-  document.getElementById('stepNum').textContent='Your Recommendation';
-  document.getElementById('stepPct').textContent='100% complete';
+  document.getElementById('stepLabel').textContent='Your Recommendation';
+  document.getElementById('stepPct').textContent='100%';
 
-  const pkg=getPackage();
+  const pkg=score();
   const p=PKGS[pkg];
+  const first=A.name.split(' ')[0]||'';
+
+  // Soft result — no hard "you need package X"
+  document.getElementById('rHead').textContent=(first?first+', you':'You')+' look like a strong fit.';
+  document.getElementById('rSub').textContent="Based on your answers we've put together a starting recommendation below. We'll review "+A.biz+" online and send back a specific plan, mockup and pricing — no guesswork.";
+  document.getElementById('rNote').innerHTML=`<strong>Likely best fit:</strong> ${p.name} — but we'll confirm this after reviewing your business. If something else makes more sense, we'll tell you.`;
 
   document.getElementById('pkgName').textContent=p.name;
-  document.getElementById('pkgTagline').textContent=p.tagline;
+  document.getElementById('pkgTag').textContent=p.tag;
   document.getElementById('pkgSetup').textContent=p.setup;
   document.getElementById('pkgMo').textContent=p.mo;
-  document.getElementById('pkgIncludes').innerHTML=p.includes.map(i=>`<li>${i}</li>`).join('');
+  document.getElementById('pkgInc').innerHTML=p.inc.map(i=>`<li>${i}</li>`).join('');
   document.getElementById('pkgWhy').innerHTML=p.why(A);
   document.getElementById('upsells').innerHTML=getUpsells(pkg);
   document.getElementById('auditBiz').textContent=A.biz||'your business';
+  if(A.phone)document.getElementById('aPhone').value=A.phone;
+  if(A.email)document.getElementById('aEmail').value=A.email;
 
-  // Pre-fill audit fields
-  if(A.phone)document.getElementById('auditPhone').value=A.phone;
-  if(A.email)document.getElementById('auditEmail').value=A.email;
-
-  window.scrollTo({top:document.getElementById('funnel').offsetTop-20,behavior:'smooth'});
-
-  // Log to DylanOS (if available) — placeholder for webhook
-  console.log('LEAD CAPTURED',{...A,package:pkg,ts:new Date().toISOString()});
+  document.getElementById('funnel').scrollIntoView({behavior:'smooth',block:'start'});
+  console.log('LEAD',{...A,pkg,ts:new Date().toISOString()});
 }
 
 function submitAudit(){
-  const phone=document.getElementById('auditPhone').value.trim();
-  const email=document.getElementById('auditEmail').value.trim();
-  if(!phone){document.getElementById('auditPhone').focus();return;}
-  // In production: POST to webhook / Netlify function
+  const ph=document.getElementById('aPhone').value.trim();
+  if(!ph){document.getElementById('aPhone').focus();return;}
   document.getElementById('auditForm').style.display='none';
-  document.getElementById('auditSent').style.display='block';
-  // TODO: wire to Netlify function → send notification to Dylan
-  console.log('AUDIT REQUEST',{name:A.name,biz:A.biz,phone,email,package:getPackage()});
+  document.getElementById('auditDone').style.display='block';
+  console.log('AUDIT_REQ',{name:A.name,biz:A.biz,phone:ph,email:document.getElementById('aEmail').value,pkg:score()});
+  // TODO: POST to Netlify function
 }
-
-// Init
-updateTurnover(2);
 </script>
 </body>
 </html>
