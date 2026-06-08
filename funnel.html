@@ -820,7 +820,7 @@ img{display:block;max-width:100%}
           <span class="pp-tag" id="pt-ads">Ads (if suitable)</span>
         </div>
       </div>
-      <div class="f-email-label">Do you have a professional business email? *</div>
+      <input type="text" id="fHP" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" aria-hidden="true"><div class="f-email-label">Do you have a professional business email? *</div>
       <div class="opts" style="margin-bottom:18px" id="s9opts"></div>
       <div class="btn-row"><button class="btn-ghost" onclick="go(8)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M11 6H1M5 2L1 6l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Back</button><button class="btn-red" id="s9n" disabled onclick="showResult()">Get My Recommendation <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     </div>
@@ -1155,7 +1155,7 @@ function showResult(){
   A.phone=document.getElementById('fPhone').value.trim();
   A.email=document.getElementById('fEmail').value.trim();
   A.web=document.getElementById('fWeb').value;
-  A.gbp=document.getElementById('fGBP').value;
+  A.gbp=document.getElementById('fGBP').value;A._hp=(document.getElementById('fHP')||{}).value||'';
   document.querySelectorAll('.step').forEach(s=>s.classList.remove('on'));
   document.getElementById('result').classList.add('on');
   document.getElementById('prog').style.width='100%';
@@ -1170,7 +1170,27 @@ function showResult(){
   document.getElementById('pkgWhy').innerHTML=p.why(A);
   document.getElementById('upsellSection').innerHTML=buildUpsells(pkg);
   document.getElementById('funnel').scrollIntoView({behavior:'smooth',block:'start'});
-  console.log('PP_LEAD',{...A,pkg,ts:new Date().toISOString()});
+  submitLead(pkg);
+}
+
+/* ── SUBMIT LEAD TO API ── */
+async function submitLead(pkg){
+  const payload={
+    full_name:A.name, business_name:A.biz, mobile_number:A.phone, email_address:A.email,
+    trade_type:A.trade, website_status:A.website, business_size:A.size,
+    average_job_value:A.jobVal, current_lead_source:A.source,
+    can_handle_more_enquiries:A.capacity, monthly_marketing_budget:A.budget,
+    main_goal:A.goal, professional_business_email_status:A.emailS,
+    website_url:A.web, google_business_profile_url:A.gbp,
+    utm_source:A.utm_source, utm_medium:A.utm_medium, utm_campaign:A.utm_campaign,
+    utm_content:A.utm_content, utm_term:A.utm_term,
+    landing_page_url:A.landingPage, referrer:A.referrer, _hp:A._hp||''
+  };
+  try{
+    const r=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const res=await r.json();
+    if(!res.ok)console.error('Lead submit issue:',res.error);
+  }catch(e){ console.error('Lead submit failed:',e); }
 }
 
 

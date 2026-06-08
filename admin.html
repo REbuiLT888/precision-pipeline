@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Precision Pipeline — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0f;--card:#141414;--card2:#1c1c1c;--line:rgba(255,255,255,.08);--red:#E8251A;--white:#fff;--grey:#9ca3af;--grey2:#666;--green:#22c55e;--amber:#f59e0b;--blue:#3b82f6;--purple:#a855f7;--h:'Outfit',sans-serif;--b:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--white);font-family:var(--b);-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-thumb{background:var(--line)}
+.login{max-width:340px;margin:120px auto;padding:32px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.login h1{font-family:var(--h);font-weight:800;font-size:24px;margin-bottom:6px}
+.login p{font-size:13px;color:var(--grey);margin-bottom:20px}
+.login input{width:100%;background:var(--card2);border:1px solid var(--line);border-radius:7px;padding:11px 13px;color:#fff;font-size:14px;outline:none;margin-bottom:12px}
+.login input:focus{border-color:var(--red)}
+.btn{background:var(--red);color:#fff;border:none;padding:11px 20px;border-radius:7px;font-family:var(--h);font-weight:600;font-size:14px;cursor:pointer;width:100%;transition:.15s}
+.btn:hover{filter:brightness(1.1)}
+.err{color:var(--red);font-size:12px;margin-top:8px;min-height:16px}
+.wrap{display:none;max-width:1300px;margin:0 auto;padding:24px}
+.wrap.on{display:block}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.top h1{font-family:var(--h);font-weight:800;font-size:26px}
+.top h1 em{color:var(--red);font-style:normal}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat .l{font-family:var(--h);text-transform:uppercase;letter-spacing:1px;font-size:10px;color:var(--grey2);margin-bottom:5px}
+.stat .v{font-family:var(--h);font-weight:800;font-size:30px;line-height:1}
+.v.red{color:var(--red)}.v.grn{color:var(--green)}.v.amb{color:var(--amber)}.v.pur{color:var(--purple)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.chip{background:var(--card);border:1px solid var(--line);color:var(--grey);padding:6px 13px;border-radius:20px;font-family:var(--h);font-size:12px;font-weight:500;cursor:pointer;transition:.12s}
+.chip:hover{border-color:var(--grey2);color:#fff}
+.chip.on{background:var(--red);color:#fff;border-color:var(--red)}
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:900px}
+th{text-align:left;font-family:var(--h);text-transform:uppercase;letter-spacing:.8px;font-size:10px;color:var(--grey2);padding:11px 13px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 13px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr{cursor:pointer;transition:.1s}
+tbody tr:hover{background:var(--card2)}
+.pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;font-family:var(--h);font-weight:600;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.t-Hot{background:rgba(232,37,26,.15);color:var(--red)}
+.t-Premium{background:rgba(168,85,247,.15);color:var(--purple)}
+.t-Warm{background:rgba(245,158,11,.15);color:var(--amber)}
+.t-Cold{background:rgba(102,102,102,.2);color:var(--grey)}
+.s-pill{background:var(--card2);color:var(--grey);font-size:11px;padding:3px 9px;border-radius:6px;border:1px solid var(--line);font-family:var(--h);font-weight:500}
+.empty{text-align:center;padding:50px;color:var(--grey2)}
+.drawer{position:fixed;top:0;right:0;height:100vh;width:420px;max-width:94vw;background:var(--card);border-left:1px solid var(--line);transform:translateX(100%);transition:.25s;z-index:50;overflow-y:auto}
+.drawer.on{transform:none}
+.dh{padding:18px 20px;border-bottom:1px solid var(--line)}
+.dh h2{font-family:var(--h);font-weight:800;font-size:22px}
+.dh .x{float:right;cursor:pointer;color:var(--grey2);font-size:20px;background:none;border:none}
+.db{padding:18px 20px}
+.kv{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;gap:10px}
+.kv .k{color:var(--grey2);font-family:var(--h);text-transform:uppercase;font-size:10px;letter-spacing:.6px}
+.kv .v{text-align:right;word-break:break-word}
+.sec{font-family:var(--h);font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:11px;color:var(--red);margin:18px 0 8px}
+.statusbtns{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.sbtn{background:var(--card2);border:1px solid var(--line);color:var(--grey);padding:6px 11px;border-radius:6px;font-family:var(--h);font-size:11px;font-weight:500;cursor:pointer;transition:.12s}
+.sbtn:hover{border-color:var(--red);color:#fff}
+.sbtn.on{background:var(--red);border-color:var(--red);color:#fff}
+.notebox{width:100%;background:var(--card2);border:1px solid var(--line);border-radius:7px;padding:10px;color:#fff;font-family:var(--b);font-size:13px;outline:none;min-height:70px;resize:vertical;margin-bottom:8px}
+.notebox:focus{border-color:var(--red)}
+a.call{color:var(--red);text-decoration:none}
+</style></head><body>
+
+<div class="login" id="login">
+  <h1>Precision <em style="color:#E8251A">Pipeline</em></h1>
+  <p>Admin access</p>
+  <input type="password" id="pw" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
+  <button class="btn" onclick="doLogin()">Sign In</button>
+  <div class="err" id="loginErr"></div>
+</div>
+
+<div class="wrap" id="wrap">
+  <div class="top">
+    <h1>Leads <em>Dashboard</em></h1>
+    <button class="chip" style="margin-left:auto" onclick="loadLeads()">↻ Refresh</button>
+    <button class="chip" onclick="logout()">Sign Out</button>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="filters" id="filters"></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Date</th><th>Business</th><th>Contact</th><th>Trade</th><th>Package</th><th>Temp</th><th>Status</th><th>Source</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</div>
+
+<div class="drawer" id="drawer"></div>
+
+<script>
+let SECRET=sessionStorage.getItem('pp_admin')||'';
+let LEADS=[], filter='all';
+const STATUSES=['New Lead','Contacted','Audit Sent','Mockup Sent','Proposal Sent','Follow Up','Won','Lost','Not Fit'];
+
+async function doLogin(){
+  const pw=document.getElementById('pw').value.trim();
+  if(!pw)return;
+  SECRET=pw;
+  const ok=await loadLeads(true);
+  if(ok){ sessionStorage.setItem('pp_admin',pw); document.getElementById('login').style.display='none'; document.getElementById('wrap').classList.add('on'); }
+  else { document.getElementById('loginErr').textContent='Wrong password or server error.'; }
+}
+function logout(){ sessionStorage.removeItem('pp_admin'); location.reload(); }
+
+async function loadLeads(silent){
+  try{
+    const r=await fetch('/api/admin-leads',{headers:{'Authorization':'Bearer '+SECRET}});
+    if(r.status===401){ if(!silent)document.getElementById('loginErr').textContent='Unauthorized.'; return false; }
+    LEADS=await r.json();
+    if(!Array.isArray(LEADS))LEADS=[];
+    render();
+    return true;
+  }catch(e){ if(!silent)document.getElementById('loginErr').textContent='Connection error.'; return false; }
+}
+
+function render(){
+  const n=LEADS.length;
+  const hot=LEADS.filter(l=>l.lead_temperature==='Hot'||l.lead_temperature==='Premium').length;
+  const won=LEADS.filter(l=>l.status==='Won').length;
+  const newl=LEADS.filter(l=>l.status==='New Lead').length;
+  document.getElementById('stats').innerHTML=`
+    <div class="stat"><div class="l">Total Leads</div><div class="v">${n}</div></div>
+    <div class="stat"><div class="l">New</div><div class="v amb">${newl}</div></div>
+    <div class="stat"><div class="l">Hot / Premium</div><div class="v red">${hot}</div></div>
+    <div class="stat"><div class="l">Won</div><div class="v grn">${won}</div></div>`;
+  const statuses=['all','New Lead','Contacted','Proposal Sent','Won','Lost'];
+  document.getElementById('filters').innerHTML=statuses.map(s=>`<span class="chip ${filter===s?'on':''}" onclick="filter='${s}';render()">${s==='all'?'All':s}</span>`).join('');
+  let list=filter==='all'?LEADS:LEADS.filter(l=>l.status===filter);
+  document.getElementById('rows').innerHTML=list.length?list.map(l=>`
+    <tr onclick="openLead('${l.id}')">
+      <td style="color:var(--grey2);font-size:12px">${new Date(l.created_at).toLocaleDateString('en-AU',{day:'2-digit',month:'short'})}</td>
+      <td style="font-weight:600">${esc(l.business_name)}</td>
+      <td>${esc(l.full_name)}<br><span style="color:var(--grey2);font-size:11px">${esc(l.mobile_number)}</span></td>
+      <td style="color:var(--grey)">${esc(l.trade_type)}</td>
+      <td style="font-size:12px">${esc(l.recommended_package||'-')}</td>
+      <td><span class="pill t-${l.lead_temperature}">${l.lead_temperature||'-'}</span></td>
+      <td><span class="s-pill">${esc(l.status)}</span></td>
+      <td style="color:var(--grey2);font-size:11px">${esc(l.utm_source||'direct')}</td>
+    </tr>`).join(''):`<tr><td colspan="8"><div class="empty">No leads yet. They'll appear here as the funnel is completed.</div></td></tr>`;
+}
+
+function openLead(id){
+  const l=LEADS.find(x=>x.id===id);if(!l)return;
+  document.getElementById('drawer').innerHTML=`
+    <div class="dh"><button class="x" onclick="closeDrawer()">✕</button>
+      <h2>${esc(l.business_name)}</h2>
+      <div style="color:var(--grey2);font-size:13px;margin-top:3px">${esc(l.full_name)} · ${esc(l.trade_type)}</div>
+    </div>
+    <div class="db">
+      <div class="kv"><span class="k">Phone</span><span class="v"><a class="call" href="tel:${esc(l.mobile_number)}">${esc(l.mobile_number)}</a></span></div>
+      <div class="kv"><span class="k">Email</span><span class="v">${esc(l.email_address)}</span></div>
+      <div class="kv"><span class="k">Temperature</span><span class="v"><span class="pill t-${l.lead_temperature}">${l.lead_temperature}</span></span></div>
+      <div class="kv"><span class="k">Recommended</span><span class="v">${esc(l.recommended_package||'-')}</span></div>
+      <div class="sec">Audit Answers</div>
+      <div class="kv"><span class="k">Website</span><span class="v">${esc(l.website_status||'-')} ${esc(l.website_url||'')}</span></div>
+      <div class="kv"><span class="k">Business Size</span><span class="v">${esc(l.business_size||'-')}</span></div>
+      <div class="kv"><span class="k">Avg Job</span><span class="v">${esc(l.average_job_value||'-')}</span></div>
+      <div class="kv"><span class="k">Lead Source</span><span class="v">${esc(l.current_lead_source||'-')}</span></div>
+      <div class="kv"><span class="k">Capacity</span><span class="v">${esc(l.can_handle_more_enquiries||'-')}</span></div>
+      <div class="kv"><span class="k">Budget</span><span class="v">${esc(l.monthly_marketing_budget||'-')}</span></div>
+      <div class="kv"><span class="k">Goal</span><span class="v">${esc(l.main_goal||'-')}</span></div>
+      <div class="kv"><span class="k">Biz Email</span><span class="v">${esc(l.professional_business_email_status||'-')}</span></div>
+      <div class="kv"><span class="k">GBP</span><span class="v">${esc(l.google_business_profile_url||'-')}</span></div>
+      <div class="sec">Tracking</div>
+      <div class="kv"><span class="k">UTM Source</span><span class="v">${esc(l.utm_source||'direct')}</span></div>
+      <div class="kv"><span class="k">Campaign</span><span class="v">${esc(l.utm_campaign||'-')}</span></div>
+      <div class="sec">Status</div>
+      <div class="statusbtns">${STATUSES.map(s=>`<button class="sbtn ${l.status===s?'on':''}" onclick="setStatus('${l.id}','${s}')">${s}</button>`).join('')}</div>
+      <div class="sec">Notes</div>
+      <textarea class="notebox" id="notebox">${esc(l.notes||'')}</textarea>
+      <button class="btn" onclick="saveNote('${l.id}')">Save Note</button>
+    </div>`;
+  document.getElementById('drawer').classList.add('on');
+}
+function closeDrawer(){document.getElementById('drawer').classList.remove('on');}
+
+async function setStatus(id,status){
+  await fetch('/api/admin-leads',{method:'POST',headers:{'Authorization':'Bearer '+SECRET,'Content-Type':'application/json'},body:JSON.stringify({id,status})});
+  const l=LEADS.find(x=>x.id===id);if(l)l.status=status;
+  openLead(id);render();
+}
+async function saveNote(id){
+  const notes=document.getElementById('notebox').value;
+  await fetch('/api/admin-leads',{method:'POST',headers:{'Authorization':'Bearer '+SECRET,'Content-Type':'application/json'},body:JSON.stringify({id,notes})});
+  const l=LEADS.find(x=>x.id===id);if(l)l.notes=notes;
+  closeDrawer();
+}
+function esc(s){return(s||'').toString().replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+// Auto-login if session exists
+if(SECRET){ loadLeads(true).then(ok=>{ if(ok){document.getElementById('login').style.display='none';document.getElementById('wrap').classList.add('on');} }); }
+</script>
+</body></html>
