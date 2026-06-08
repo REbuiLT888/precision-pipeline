@@ -47,22 +47,67 @@ img{display:block;max-width:100%}
 .banner a{color:#fff;text-decoration:none}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;padding-top:64px;position:relative;overflow:hidden}
-.hero-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(232,37,26,.12) 0%,transparent 70%);pointer-events:none;z-index:0}
-.hero-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;z-index:1}
-.pill{display:inline-flex;align-items:center;gap:6px;background:var(--red-a);border:1px solid rgba(232,37,26,.25);border-radius:100px;padding:6px 14px;font-family:var(--h);font-size:12px;font-weight:500;color:var(--red);letter-spacing:.3px;margin-bottom:24px}
+.hero{min-height:100vh;display:flex;flex-direction:column;padding-top:64px;position:relative;overflow:hidden;background:var(--bg)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 75% 40%,rgba(232,37,26,.09) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 20% 80%,rgba(232,37,26,.05) 0%,transparent 60%);pointer-events:none;z-index:0}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)}
+.hero-body{flex:1;display:flex;align-items:center;padding:60px 24px 60px;position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;gap:48px}
+.hero-left{flex:1;min-width:0}
+.hero-right{width:480px;flex-shrink:0}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--red-a);border:1px solid rgba(232,37,26,.25);border-radius:100px;padding:6px 14px;font-family:var(--h);font-size:12px;font-weight:500;color:var(--red);letter-spacing:.3px;margin-bottom:20px}
 .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-family:var(--h);font-weight:800;font-size:clamp(36px,7vw,72px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:20px;max-width:820px}
+.hero h1{font-family:var(--h);font-weight:800;font-size:clamp(34px,5vw,62px);line-height:1.04;letter-spacing:-1.5px;margin-bottom:16px}
 .hero h1 span{color:var(--red)}
-.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.65;max-width:520px;margin:0 auto 36px;font-weight:400}
-.hero-actions{display:flex;flex-direction:column;align-items:center;gap:10px}
+.hero-sub{font-size:clamp(14px,1.6vw,17px);color:var(--grey);line-height:1.65;max-width:460px;margin-bottom:28px;font-weight:400}
+.hero-bullets{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.hero-bullet{display:flex;align-items:flex-start;gap:12px}
+.hb-ico{width:36px;height:36px;border-radius:50%;background:var(--red-a);border:1px solid rgba(232,37,26,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.hb-ico svg{width:16px;height:16px}
+.hb-text strong{display:block;font-family:var(--h);font-weight:700;font-size:14px;margin-bottom:2px}
+.hb-text span{font-size:13px;color:var(--grey)}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-cta-note{display:flex;flex-direction:column;gap:2px}
+.hero-cta-note span{font-size:11px;color:var(--grey2);letter-spacing:.3px}
+.hero-cta-note span:first-child{font-style:italic;color:var(--grey);font-size:12px}
 .btn-red{background:var(--red);color:#fff;border:none;padding:14px 32px;border-radius:var(--r);font-family:var(--h);font-weight:700;font-size:15px;letter-spacing:.2px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
 .btn-red:hover{background:var(--red2);transform:translateY(-1px)}
 .btn-red:disabled{background:#333;color:#666;cursor:not-allowed;transform:none}
 .btn-ghost{background:transparent;color:var(--grey);border:1px solid var(--line2);padding:14px 24px;border-radius:var(--r);font-family:var(--h);font-weight:500;font-size:14px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:8px}
 .btn-ghost:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
 .hero-note{font-size:12px;color:var(--grey2);letter-spacing:.3px}
+/* DASHBOARD WIDGET */
+.dash-widget{background:#0e0e12;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.6),0 0 0 1px rgba(232,37,26,.08)}
+.dash-titlebar{background:#0a0a0e;border-bottom:1px solid rgba(255,255,255,.06);padding:10px 14px;display:flex;align-items:center;gap:7px}
+.dash-dots{display:flex;gap:5px}
+.dash-dot{width:10px;height:10px;border-radius:50%}
+.dash-title{font-family:var(--h);font-weight:600;font-size:12px;color:rgba(255,255,255,.5);margin-left:6px;letter-spacing:.3px}
+.dash-body{padding:16px}
+.dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.dash-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:10px 10px 8px}
+.dash-stat.highlight{background:var(--red-a);border-color:rgba(232,37,26,.25)}
+.ds-label{font-size:9px;color:rgba(255,255,255,.4);font-family:var(--h);font-weight:500;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.ds-val{font-family:var(--h);font-weight:800;font-size:18px;letter-spacing:-.5px;line-height:1}
+.dash-stat.highlight .ds-val{color:var(--red)}
+.ds-change{font-size:9px;color:#4ade80;font-family:var(--h);font-weight:600;margin-top:3px}
+.dash-charts{display:grid;grid-template-columns:1fr 140px;gap:10px}
+.dash-chart-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:6px;padding:10px}
+.dc-label{font-size:9px;color:rgba(255,255,255,.35);font-family:var(--h);font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.dash-donut-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:6px;padding:10px}
+.donut-legend{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.dl-row{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:9px;color:rgba(255,255,255,.45);font-family:var(--h)}
+.dl-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dl-pct{color:rgba(255,255,255,.6);font-weight:600}
+@media(max-width:900px){
+  .hero-body{flex-direction:column;gap:32px;padding:40px 20px 40px}
+  .hero-right{width:100%}
+  .hero-left{text-align:left}
+  .hero h1{font-size:clamp(30px,7vw,52px)}
+}
+@media(max-width:560px){
+  .dash-stats{grid-template-columns:repeat(2,1fr)}
+  .dash-charts{grid-template-columns:1fr}
+  .dash-donut-box{display:none}
+}
 
 /* ── MARQUEE ── */
 .marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;overflow:hidden;background:var(--card)}
@@ -318,17 +363,115 @@ img{display:block;max-width:100%}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid-bg"></div>
   <div class="hero-body">
-    <div class="pill"><span class="dot"></span>Perth Trades — Free Business Audit</div>
-    <h1>Your Reviews Are<br><span>Worth More Than This.</span></h1>
-    <p class="hero-sub">Built for Perth trades with strong Google reviews but no proper online pipeline. Find out exactly what setup makes sense for your trade and budget.</p>
-    <div class="hero-actions">
-      <a href="#funnel" class="btn-red" style="font-size:16px;padding:15px 34px">
-        Get My Free Audit
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <p class="hero-note">9 questions · No obligation · Personalised recommendation</p>
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="pill"><span class="dot"></span>Perth Trades</div>
+      <h1>Turn Your Reviews Into<br><span>Real, Consistent</span><br>Enquiries.</h1>
+      <p class="hero-sub">We build the complete online pipeline for Perth trades — so you get more calls, more quotes, and more jobs.</p>
+      <ul class="hero-bullets">
+        <li class="hero-bullet">
+          <div class="hb-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 10l4-5 3 3 5-6" stroke="#E8251A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="hb-text"><strong>Get Found</strong><span>Rank higher. Be seen by more locals.</span></div>
+        </li>
+        <li class="hero-bullet">
+          <div class="hb-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5 6.5 5 8 2z" stroke="#E8251A" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div class="hb-text"><strong>Get Leads</strong><span>Convert traffic into quality enquiries.</span></div>
+        </li>
+        <li class="hero-bullet">
+          <div class="hb-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1" stroke="#E8251A" stroke-width="1.5"/><path d="M5 1v4M11 1v4M2 7h12" stroke="#E8251A" stroke-width="1.5" stroke-linecap="round"/><path d="M5 10h2v2H5z" fill="#E8251A" opacity=".6"/></svg></div>
+          <div class="hb-text"><strong>Get Booked</strong><span>Fill your schedule with better jobs.</span></div>
+        </li>
+      </ul>
+      <div class="hero-actions">
+        <a href="#funnel" class="btn-red" style="font-size:16px;padding:15px 32px">
+          Get My Free Audit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="hero-cta-note">
+          <span>Takes 60 seconds</span>
+          <span>No obligation · Free audit</span>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT: LIVE DASHBOARD WIDGET -->
+    <div class="hero-right">
+      <div class="dash-widget">
+        <div class="dash-titlebar">
+          <div class="dash-dots">
+            <div class="dash-dot" style="background:#ff5f57"></div>
+            <div class="dash-dot" style="background:#febc2e"></div>
+            <div class="dash-dot" style="background:#28c840"></div>
+          </div>
+          <span class="dash-title">Pipeline Overview</span>
+        </div>
+        <div class="dash-body">
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <div class="ds-label">Website Visitors</div>
+              <div class="ds-val" id="dv1">2,487</div>
+              <div class="ds-change">↑ +18%</div>
+            </div>
+            <div class="dash-stat">
+              <div class="ds-label">New Enquiries</div>
+              <div class="ds-val" id="dv2">156</div>
+              <div class="ds-change">↑ +24%</div>
+            </div>
+            <div class="dash-stat">
+              <div class="ds-label">Jobs Booked</div>
+              <div class="ds-val" id="dv3">37</div>
+              <div class="ds-change">↑ +15%</div>
+            </div>
+            <div class="dash-stat highlight">
+              <div class="ds-label">Revenue</div>
+              <div class="ds-val" id="dv4">$28,540</div>
+              <div class="ds-change">↑ +22%</div>
+            </div>
+          </div>
+          <div class="dash-charts">
+            <div class="dash-chart-box">
+              <div class="dc-label">Enquiries Over Time</div>
+              <svg width="100%" height="80" viewBox="0 0 260 80" preserveAspectRatio="none" id="sparkline">
+                <defs>
+                  <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#E8251A" stop-opacity=".25"/>
+                    <stop offset="100%" stop-color="#E8251A" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path id="spark-area" fill="url(#sg)"/>
+                <path id="spark-line" fill="none" stroke="#E8251A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle id="spark-dot" r="3.5" fill="#E8251A"/>
+                <rect id="spark-tip" rx="3" fill="rgba(0,0,0,.7)" stroke="rgba(232,37,26,.3)" stroke-width="1"/>
+                <text id="spark-tip-text" font-size="8" fill="#fff" font-family="Inter,sans-serif" font-weight="600"/>
+              </svg>
+              <div style="display:flex;justify-content:space-between;margin-top:4px">
+                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">Jan</span>
+                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">Mar</span>
+                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">May</span>
+                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">Jun</span>
+              </div>
+            </div>
+            <div class="dash-donut-box">
+              <div class="dc-label">Top Lead Sources</div>
+              <svg width="80" height="80" viewBox="0 0 80 80" style="display:block;margin:0 auto">
+                <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="14"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#E8251A" stroke-width="14" stroke-dasharray="79 97" stroke-dashoffset="70" stroke-linecap="butt"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#b81d14" stroke-width="14" stroke-dasharray="53 123" stroke-dashoffset="-27" stroke-linecap="butt"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#444" stroke-width="14" stroke-dasharray="27 149" stroke-dashoffset="-80" stroke-linecap="butt"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#2a2a2a" stroke-width="14" stroke-dasharray="18 158" stroke-dashoffset="-107" stroke-linecap="butt"/>
+              </svg>
+              <div class="donut-legend">
+                <div class="dl-row"><div class="dl-dot" style="background:#E8251A"></div><span>Google Search</span><span class="dl-pct">45%</span></div>
+                <div class="dl-row"><div class="dl-dot" style="background:#b81d14"></div><span>Google Maps</span><span class="dl-pct">30%</span></div>
+                <div class="dl-row"><div class="dl-dot" style="background:#444"></div><span>Website</span><span class="dl-pct">15%</span></div>
+                <div class="dl-row"><div class="dl-dot" style="background:#2a2a2a"></div><span>Other</span><span class="dl-pct">10%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1002,6 +1145,73 @@ function showResult(){
   console.log('PP_LEAD',{...A,pkg,ts:new Date().toISOString()});
 }
 
+
+
+/* ── SPARKLINE + COUNTER ANIMATION ── */
+(function(){
+  const pts=[28,35,22,42,38,55,48,62,44,70,58,80,65,72,68,90,76,85,92,88,100,95,110,105,120,115,130];
+  const W=260,H=80,pad=6;
+  const mn=Math.min(...pts),mx=Math.max(...pts);
+  const x=i=>(i/(pts.length-1))*W;
+  const y=v=>H-pad-((v-mn)/(mx-mn))*(H-pad*2);
+  const d='M '+pts.map((v,i)=>x(i)+','+y(v)).join(' L ');
+  const area=d+' L '+W+','+H+' L 0,'+H+' Z';
+  const sl=document.getElementById('spark-line');
+  const sa=document.getElementById('spark-area');
+  const sd=document.getElementById('spark-dot');
+  const st=document.getElementById('spark-tip');
+  const stt=document.getElementById('spark-tip-text');
+  if(sl){sl.setAttribute('d',d);sa.setAttribute('d',area);}
+  // Animate dot along line
+  let frame=0;
+  function animDot(){
+    frame=(frame+0.3)%pts.length;
+    const i=Math.floor(frame),t=frame-i;
+    const ni=Math.min(i+1,pts.length-1);
+    const cx=x(i)+(x(ni)-x(i))*t;
+    const cy=y(pts[i])+(y(pts[ni])-y(pts[i]))*t;
+    if(sd){sd.setAttribute('cx',cx);sd.setAttribute('cy',cy);}
+    if(st){
+      const tipW=52,tipH=18;
+      const tx=Math.min(Math.max(cx-tipW/2,0),W-tipW);
+      st.setAttribute('x',tx);st.setAttribute('y',cy-tipH-6);
+      st.setAttribute('width',tipW);st.setAttribute('height',tipH);
+      const val=Math.round(pts[i]+(pts[ni]-pts[i])*t);
+      if(stt){stt.setAttribute('x',tx+tipW/2);stt.setAttribute('y',cy-tipH+3);stt.setAttribute('text-anchor','middle');stt.setAttribute('dominant-baseline','hanging');stt.textContent=val+' enquiries';}
+    }
+    requestAnimationFrame(animDot);
+  }
+  animDot();
+  // Counter animation for stats
+  function animCount(el,target,prefix,suffix,dur){
+    const start=performance.now();
+    const from=target*0.6;
+    function step(now){
+      const p=Math.min((now-start)/dur,1);
+      const ease=1-Math.pow(1-p,3);
+      const val=Math.round(from+(target-from)*ease);
+      const str=prefix+(val>=1000?(val/1000).toFixed(val>=10000?0:1)+'K':val)+suffix;
+      el.textContent=str;
+      if(p<1)requestAnimationFrame(step);
+      else el.textContent=prefix+(target>=1000?target.toLocaleString():target)+suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  // Trigger when hero is visible
+  const obs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      setTimeout(()=>{
+        animCount(document.getElementById('dv1'),2487,'','',1400);
+        animCount(document.getElementById('dv2'),156,'','',1200);
+        animCount(document.getElementById('dv3'),37,'','',1000);
+        animCount(document.getElementById('dv4'),28540,'$','',1600);
+      },300);
+      obs.disconnect();
+    }
+  },{threshold:.3});
+  const hw=document.querySelector('.dash-widget');
+  if(hw)obs.observe(hw);
+})();
 
 /* ── SETUP SUMMARY + PIPELINE UPDATER ── */
 const SS_LABELS = {
