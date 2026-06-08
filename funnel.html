@@ -396,82 +396,9 @@ img{display:block;max-width:100%}
         </div>
       </div>
     </div>
-    <!-- RIGHT: LIVE DASHBOARD WIDGET -->
+    <!-- RIGHT: HERO IMAGE -->
     <div class="hero-right">
-      <div class="dash-widget">
-        <div class="dash-titlebar">
-          <div class="dash-dots">
-            <div class="dash-dot" style="background:#ff5f57"></div>
-            <div class="dash-dot" style="background:#febc2e"></div>
-            <div class="dash-dot" style="background:#28c840"></div>
-          </div>
-          <span class="dash-title">Pipeline Overview</span>
-        </div>
-        <div class="dash-body">
-          <div class="dash-stats">
-            <div class="dash-stat">
-              <div class="ds-label">Website Visitors</div>
-              <div class="ds-val" id="dv1">2,487</div>
-              <div class="ds-change">↑ +18%</div>
-            </div>
-            <div class="dash-stat">
-              <div class="ds-label">New Enquiries</div>
-              <div class="ds-val" id="dv2">156</div>
-              <div class="ds-change">↑ +24%</div>
-            </div>
-            <div class="dash-stat">
-              <div class="ds-label">Jobs Booked</div>
-              <div class="ds-val" id="dv3">37</div>
-              <div class="ds-change">↑ +15%</div>
-            </div>
-            <div class="dash-stat highlight">
-              <div class="ds-label">Revenue</div>
-              <div class="ds-val" id="dv4">$28,540</div>
-              <div class="ds-change">↑ +22%</div>
-            </div>
-          </div>
-          <div class="dash-charts">
-            <div class="dash-chart-box">
-              <div class="dc-label">Enquiries Over Time</div>
-              <svg width="100%" height="80" viewBox="0 0 260 80" preserveAspectRatio="none" id="sparkline">
-                <defs>
-                  <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#E8251A" stop-opacity=".25"/>
-                    <stop offset="100%" stop-color="#E8251A" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <path id="spark-area" fill="url(#sg)"/>
-                <path id="spark-line" fill="none" stroke="#E8251A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle id="spark-dot" r="3.5" fill="#E8251A"/>
-                <rect id="spark-tip" rx="3" fill="rgba(0,0,0,.7)" stroke="rgba(232,37,26,.3)" stroke-width="1"/>
-                <text id="spark-tip-text" font-size="8" fill="#fff" font-family="Inter,sans-serif" font-weight="600"/>
-              </svg>
-              <div style="display:flex;justify-content:space-between;margin-top:4px">
-                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">Jan</span>
-                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">Mar</span>
-                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">May</span>
-                <span style="font-size:8px;color:rgba(255,255,255,.25);font-family:Inter,sans-serif">Jun</span>
-              </div>
-            </div>
-            <div class="dash-donut-box">
-              <div class="dc-label">Top Lead Sources</div>
-              <svg width="80" height="80" viewBox="0 0 80 80" style="display:block;margin:0 auto">
-                <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="14"/>
-                <circle cx="40" cy="40" r="28" fill="none" stroke="#E8251A" stroke-width="14" stroke-dasharray="79 97" stroke-dashoffset="70" stroke-linecap="butt"/>
-                <circle cx="40" cy="40" r="28" fill="none" stroke="#b81d14" stroke-width="14" stroke-dasharray="53 123" stroke-dashoffset="-27" stroke-linecap="butt"/>
-                <circle cx="40" cy="40" r="28" fill="none" stroke="#444" stroke-width="14" stroke-dasharray="27 149" stroke-dashoffset="-80" stroke-linecap="butt"/>
-                <circle cx="40" cy="40" r="28" fill="none" stroke="#2a2a2a" stroke-width="14" stroke-dasharray="18 158" stroke-dashoffset="-107" stroke-linecap="butt"/>
-              </svg>
-              <div class="donut-legend">
-                <div class="dl-row"><div class="dl-dot" style="background:#E8251A"></div><span>Google Search</span><span class="dl-pct">45%</span></div>
-                <div class="dl-row"><div class="dl-dot" style="background:#b81d14"></div><span>Google Maps</span><span class="dl-pct">30%</span></div>
-                <div class="dl-row"><div class="dl-dot" style="background:#444"></div><span>Website</span><span class="dl-pct">15%</span></div>
-                <div class="dl-row"><div class="dl-dot" style="background:#2a2a2a"></div><span>Other</span><span class="dl-pct">10%</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <img src="hero.png" alt="Precision Pipeline — Trade leads dashboard" style="width:100%;border-radius:12px;display:block">
     </div>
   </div>
 </section>
@@ -1147,71 +1074,6 @@ function showResult(){
 
 
 
-/* ── SPARKLINE + COUNTER ANIMATION ── */
-(function(){
-  const pts=[28,35,22,42,38,55,48,62,44,70,58,80,65,72,68,90,76,85,92,88,100,95,110,105,120,115,130];
-  const W=260,H=80,pad=6;
-  const mn=Math.min(...pts),mx=Math.max(...pts);
-  const x=i=>(i/(pts.length-1))*W;
-  const y=v=>H-pad-((v-mn)/(mx-mn))*(H-pad*2);
-  const d='M '+pts.map((v,i)=>x(i)+','+y(v)).join(' L ');
-  const area=d+' L '+W+','+H+' L 0,'+H+' Z';
-  const sl=document.getElementById('spark-line');
-  const sa=document.getElementById('spark-area');
-  const sd=document.getElementById('spark-dot');
-  const st=document.getElementById('spark-tip');
-  const stt=document.getElementById('spark-tip-text');
-  if(sl){sl.setAttribute('d',d);sa.setAttribute('d',area);}
-  // Animate dot along line
-  let frame=0;
-  function animDot(){
-    frame=(frame+0.3)%pts.length;
-    const i=Math.floor(frame),t=frame-i;
-    const ni=Math.min(i+1,pts.length-1);
-    const cx=x(i)+(x(ni)-x(i))*t;
-    const cy=y(pts[i])+(y(pts[ni])-y(pts[i]))*t;
-    if(sd){sd.setAttribute('cx',cx);sd.setAttribute('cy',cy);}
-    if(st){
-      const tipW=52,tipH=18;
-      const tx=Math.min(Math.max(cx-tipW/2,0),W-tipW);
-      st.setAttribute('x',tx);st.setAttribute('y',cy-tipH-6);
-      st.setAttribute('width',tipW);st.setAttribute('height',tipH);
-      const val=Math.round(pts[i]+(pts[ni]-pts[i])*t);
-      if(stt){stt.setAttribute('x',tx+tipW/2);stt.setAttribute('y',cy-tipH+3);stt.setAttribute('text-anchor','middle');stt.setAttribute('dominant-baseline','hanging');stt.textContent=val+' enquiries';}
-    }
-    requestAnimationFrame(animDot);
-  }
-  animDot();
-  // Counter animation for stats
-  function animCount(el,target,prefix,suffix,dur){
-    const start=performance.now();
-    const from=target*0.6;
-    function step(now){
-      const p=Math.min((now-start)/dur,1);
-      const ease=1-Math.pow(1-p,3);
-      const val=Math.round(from+(target-from)*ease);
-      const str=prefix+(val>=1000?(val/1000).toFixed(val>=10000?0:1)+'K':val)+suffix;
-      el.textContent=str;
-      if(p<1)requestAnimationFrame(step);
-      else el.textContent=prefix+(target>=1000?target.toLocaleString():target)+suffix;
-    }
-    requestAnimationFrame(step);
-  }
-  // Trigger when hero is visible
-  const obs=new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting){
-      setTimeout(()=>{
-        animCount(document.getElementById('dv1'),2487,'','',1400);
-        animCount(document.getElementById('dv2'),156,'','',1200);
-        animCount(document.getElementById('dv3'),37,'','',1000);
-        animCount(document.getElementById('dv4'),28540,'$','',1600);
-      },300);
-      obs.disconnect();
-    }
-  },{threshold:.3});
-  const hw=document.querySelector('.dash-widget');
-  if(hw)obs.observe(hw);
-})();
 
 /* ── SETUP SUMMARY + PIPELINE UPDATER ── */
 const SS_LABELS = {
