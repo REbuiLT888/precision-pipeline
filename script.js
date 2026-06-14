@@ -658,6 +658,12 @@ let workspace = JSON.parse(localStorage.getItem("precision_os_workspace") || "nu
   } catch (e) { session = null; workspace = null; localStorage.removeItem("precision_os_session"); localStorage.removeItem("precision_os_workspace"); }
 })();
 
+(function injectAuthTabsStyle() {
+  const s = document.createElement("style");
+  s.textContent = ".auth-tabs button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-height:44px}";
+  document.head.appendChild(s);
+})();
+
 let backendStatus = { state: "idle", message: "Connect Supabase to activate live backend data." };
 let backendData = {
   dashboard: null,
