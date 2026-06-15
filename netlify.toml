@@ -14,6 +14,16 @@
 
 # SPA catch-all — serves funnel.html for all routes so the JS router handles them
 [[redirects]]
-  from = "/*"
+  from = "/pipeline"
   to = "/funnel.html"
+  status = 200
+
+[[redirects]]
+  from = "/pipeline/*"
+  to = "/funnel.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/precision-os.html"
   status = 200

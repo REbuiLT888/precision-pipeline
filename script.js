@@ -723,13 +723,8 @@ function syncViewFromPath() {
     activeView = "landing";
     return;
   }
-  if (path === "/funnel") {
-    activeView = "funnel";
-    return;
-  }
-  // Default: precision-os.netlify.app root goes to dashboard (or login if not authenticated)
-  activeView = session?.access_token ? "dashboard" : "auth";
-  authMode = "login";
+  // Default: show the OS marketing funnel
+  activeView = "funnel";
 }
 
 function routeForState() {
