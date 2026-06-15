@@ -12,11 +12,7 @@
   to = "/.netlify/functions/admin-leads"
   status = 200
 
-[[redirects]]
-  from = "/admin"
-  to = "/admin.html"
-  status = 200
-
+# SPA catch-all — serves funnel.html for all routes so the JS router handles them
 [[redirects]]
   from = "/*"
   to = "/funnel.html"

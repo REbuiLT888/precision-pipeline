@@ -723,7 +723,13 @@ function syncViewFromPath() {
     activeView = "landing";
     return;
   }
-  activeView = "funnel";
+  if (path === "/funnel") {
+    activeView = "funnel";
+    return;
+  }
+  // Default: precision-os.netlify.app root goes to dashboard (or login if not authenticated)
+  activeView = session?.access_token ? "dashboard" : "auth";
+  authMode = "login";
 }
 
 function routeForState() {
@@ -731,7 +737,8 @@ function routeForState() {
   if (activeView === "dashboard") return session?.access_token ? "/dashboard" : "/login";
   if (activeView === "admin") return "/admin";
   if (activeView === "landing") return "/platform";
-  return "/";
+  if (activeView === "funnel") return "/funnel";
+  return "/dashboard";
 }
 
 function updateBrowserPath() {
