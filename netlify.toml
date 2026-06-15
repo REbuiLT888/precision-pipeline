@@ -12,20 +12,7 @@
   to = "/.netlify/functions/admin-leads"
   status = 200
 
-# Force-redirect Pipeline HTML files away from the OS domain
-[[redirects]]
-  from = "/funnel.html"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/admin.html"
-  to = "/"
-  status = 301
-  force = true
-
-# Precision Pipeline funnel still accessible at /pipeline
+# Precision Pipeline funnel accessible at /pipeline
 [[redirects]]
   from = "/pipeline"
   to = "/funnel.html"
@@ -39,5 +26,5 @@
 # SPA catch-all — everything else serves the Precision OS shell
 [[redirects]]
   from = "/*"
-  to = "/precision-os.html"
+  to = "/index.html"
   status = 200
