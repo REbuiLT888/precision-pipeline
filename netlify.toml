@@ -12,6 +12,21 @@
   to = "/.netlify/functions/admin-leads"
   status = 200
 
+[[redirects]]
+  from = "/api/auth/login"
+  to = "/.netlify/functions/auth-login"
+  status = 200
+
+[[redirects]]
+  from = "/api/auth/signup"
+  to = "/.netlify/functions/auth-signup"
+  status = 200
+
+[[redirects]]
+  from = "/api/workspaces"
+  to = "/.netlify/functions/workspaces"
+  status = 200
+
 # Precision Pipeline funnel accessible at /pipeline
 [[redirects]]
   from = "/pipeline"

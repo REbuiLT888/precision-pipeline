@@ -3186,6 +3186,12 @@ function bindEvents() {
       const data = await apiRequest(`/auth/${form.dataset.auth}`, { method: "POST", body: JSON.stringify(payload) });
       if (data.session) saveSession(data.session);
       if (data.access_token) saveSession(data);
+      // Email confirmation required — Supabase returns user but no session
+      if (data._pending_confirmation || (!data.access_token && !data.session && data.user)) {
+        backendStatus = { state: "error", message: "Check your email and click the confirmation link, then log in." };
+        render();
+        return;
+      }
       authDraft = {
         login: { email: "", password: "" },
         signup: { email: "", password: "", workspace_name: "", industry: "" },
