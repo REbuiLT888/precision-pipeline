@@ -854,7 +854,7 @@ function funnel() {
         ${session?.access_token
           ? `<button class="btn primary compact" data-view="dashboard"><span>Dashboard</span><span class="btn-mark">→</span></button>`
           : `<a class="nav-login" href="#" data-view="auth">Login</a>
-             ${button(selectedOption.cta, "primary compact", `data-funnel-scroll="#start" data-track="pricing_cta_clicked"`)}`}
+             <button class="btn primary compact" data-auth-mode="signup" data-view="auth"><span>Create account</span><span class="btn-mark">→</span></button>`}
       </div>
     </header>
 
@@ -1030,9 +1030,9 @@ function authView() {
           <h1>${isSignup ? "Start with Precision OS" : "Log in to Precision OS"}</h1>
           <p>${isSignup ? "Create an account and your first workspace. Defined scope, written delivery, human review." : "Access your workspace, workflow maps, AI workers and review queue."}</p>
         </div>
-        <div class="auth-tabs" role="tablist">
-          <button class="${!isSignup ? "active" : ""}" data-auth-mode="login" role="tab">Login</button>
-          <button class="${isSignup ? "active" : ""}" data-auth-mode="signup" role="tab">Create account</button>
+        <div class="auth-tabs" role="tablist" aria-label="Login or create account">
+          <button class="${!isSignup ? "active" : ""}" data-auth-mode="login" role="tab" aria-selected="${!isSignup}" type="button">Login</button>
+          <button class="${isSignup ? "active" : ""}" data-auth-mode="signup" role="tab" aria-selected="${isSignup}" type="button">Create account</button>
         </div>
         ${backendStatus.state === "error" ? `<div class="auth-error">${backendStatus.message}</div>` : ""}
         ${backendStatus.state === "loading" ? `<div class="auth-loading">${backendStatus.message}</div>` : ""}
@@ -2960,7 +2960,7 @@ function bindEvents() {
     event.preventDefault();
     let next = el.dataset.view;
     const scrollTarget = el.dataset.scrollTarget;
-    if (next === "auth") authMode = "login";
+    if (next === "auth") authMode = el.dataset.authMode || "login";
     // Dashboard is a protected route — unauthenticated users go to login.
     if (next === "dashboard" && !session?.access_token) {
       next = "auth";
