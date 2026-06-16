@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RenoCheck — Check Your Renovation Quote Before You Overpay</title>
+<meta name="description" content="Upload your renovation quote. We compare material pricing, source factory-direct alternatives, and help you understand where the money is going. From $99.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0906;
+  --bg2:#0f0d0a;
+  --bg3:#141210;
+  --card:#1a1714;
+  --card2:#211e1a;
+  --card3:#28241f;
+  --line:rgba(255,248,235,.06);
+  --line2:rgba(255,248,235,.11);
+  --line3:rgba(255,248,235,.18);
+  --gold:#c09a5e;
+  --gold2:#d4b070;
+  --gold-dim:rgba(192,154,94,.12);
+  --gold-dimmer:rgba(192,154,94,.07);
+  --white:#faf6f0;
+  --text:#f0e9df;
+  --grey:#9a9088;
+  --grey2:#6e6560;
+  --h:'Outfit',sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --b:'Inter',system-ui,sans-serif;
+  --r:8px;
+  --r2:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img{display:block;max-width:100%}
+input,textarea,select,button{font:inherit}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,9,6,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav-logo{font-family:var(--h);font-weight:800;font-size:18px;letter-spacing:-.3px;color:var(--white);display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--gold),#8a6d3a);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo-mark svg{width:16px;height:16px}
+.nav-logo em{color:var(--gold);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13.5px;color:var(--grey);transition:.15s;font-weight:500}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--gold);color:#0a0906;border:none;padding:10px 22px;border-radius:6px;font-family:var(--h);font-weight:700;font-size:13.5px;letter-spacing:.1px;cursor:pointer;text-decoration:none;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.nav-cta:hover{background:var(--gold2)}
+@media(max-width:760px){.nav-links{display:none}.nav{padding:0 20px}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;padding-top:68px;position:relative;overflow:hidden;background:var(--bg)}
+.hero-marble{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero-marble::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 90% 70% at 75% 30%,rgba(192,154,94,.07) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 20% 80%,rgba(255,255,255,.025) 0%,transparent 50%),
+  linear-gradient(160deg,rgba(192,154,94,.04) 0%,transparent 40%)}
+.hero-marble::after{content:'';position:absolute;right:0;top:0;width:55%;height:100%;background:radial-gradient(ellipse 80% 80% at 70% 40%,rgba(192,154,94,.05) 0%,transparent 70%)}
+.hero-body{flex:1;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;padding:80px 48px 80px;position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%}
+.hero-left{max-width:580px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dimmer);border:1px solid rgba(192,154,94,.2);border-radius:100px;padding:5px 14px;font-family:var(--h);font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
+.hero-badge span{width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;box-shadow:0 0 8px var(--gold)}
+.hero h1{font-family:var(--h);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--white);margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-lead{font-size:1.05rem;color:var(--grey);line-height:1.75;margin-bottom:36px;max-width:480px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0a0906;border:none;padding:13px 26px;border-radius:7px;font-family:var(--h);font-weight:700;font-size:15px;cursor:pointer;transition:.15s;white-space:nowrap}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);border:1px solid var(--line2);padding:12px 22px;border-radius:7px;font-family:var(--h);font-weight:600;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap}
+.btn-secondary:hover{border-color:var(--line3);background:var(--card)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--grey);border:none;padding:12px 16px;border-radius:7px;font-family:var(--h);font-weight:500;font-size:13.5px;cursor:pointer;transition:.15s;white-space:nowrap}
+.btn-ghost:hover{color:var(--white)}
+.trust-strip{display:flex;flex-wrap:wrap;gap:8px}
+.trust-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--grey);border:1px solid var(--line);padding:5px 12px;border-radius:100px}
+.trust-pill i{width:5px;height:5px;border-radius:50%;background:var(--grey2);display:inline-block}
+
+/* ── HERO RIGHT: QUOTE MOCKUP ── */
+.quote-mockup{background:var(--card);border:1px solid var(--line2);border-radius:var(--r2);overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px rgba(192,154,94,.06)}
+.mock-titlebar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:var(--card2);border-bottom:1px solid var(--line)}
+.mock-dots{display:flex;gap:6px}
+.mock-dot{width:10px;height:10px;border-radius:50%}
+.mock-dot:nth-child(1){background:#e74c3c}
+.mock-dot:nth-child(2){background:#f39c12}
+.mock-dot:nth-child(3){background:#27ae60}
+.mock-title{font-family:var(--h);font-size:11.5px;color:var(--grey2);font-weight:500;margin-left:6px;letter-spacing:.2px}
+.mock-body{padding:20px}
+.mock-status{display:flex;align-items:center;gap:8px;background:var(--gold-dimmer);border:1px solid rgba(192,154,94,.15);border-radius:6px;padding:10px 14px;margin-bottom:18px}
+.mock-status-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.mock-status span{font-family:var(--h);font-size:12px;font-weight:600;color:var(--gold)}
+.mock-quote-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}
+.mock-quote-row:last-child{border-bottom:none}
+.mock-quote-row div{display:flex;flex-direction:column;gap:1px}
+.mock-quote-row strong{font-size:12.5px;color:var(--text);font-weight:500}
+.mock-quote-row span{font-size:10.5px;color:var(--grey2)}
+.mock-quote-price{text-align:right}
+.mock-quote-price .orig{font-size:11px;color:var(--grey2);text-decoration:line-through}
+.mock-quote-price .reno{font-family:var(--h);font-size:14px;font-weight:700;color:var(--gold)}
+.mock-quote-price .save{font-size:10px;color:#4ade80}
+.mock-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px}
+.mock-sum-card{background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:10px 12px;text-align:center}
+.mock-sum-card span{font-size:10px;color:var(--grey2);display:block;margin-bottom:3px}
+.mock-sum-card strong{font-family:var(--h);font-size:16px;font-weight:700;color:var(--gold);display:block}
+.mock-sum-card.green strong{color:#4ade80}
+
+@media(max-width:900px){
+  .hero-body{grid-template-columns:1fr;gap:40px;padding:60px 24px}
+  .quote-mockup{max-width:480px}
+}
+
+/* ── SECTION UTILITY ── */
+.section{padding:80px 48px;max-width:1280px;margin:0 auto}
+.sec-label{display:inline-block;font-family:var(--h);font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.sec-heading{font-family:var(--h);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;line-height:1.15;letter-spacing:-.025em;color:var(--white);margin-bottom:14px}
+.sec-lead{font-size:.95rem;color:var(--grey);line-height:1.75;max-width:560px}
+.sec-head{margin-bottom:56px}
+@media(max-width:760px){.section{padding:64px 20px}}
+
+/* ── LOGOS BAR ── */
+.logos-bar{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 48px}
+.logos-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:0}
+.logos-label{font-size:11.5px;color:var(--grey2);font-weight:500;white-space:nowrap;margin-right:32px;letter-spacing:.3px;text-transform:uppercase}
+.logos-items{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.logo-chip{font-family:var(--h);font-size:13px;font-weight:600;color:var(--grey2);letter-spacing:.5px;opacity:.7}
+@media(max-width:760px){.logos-bar{padding:20px}.logos-inner{flex-direction:column;align-items:flex-start;gap:14px}}
+
+/* ── HOW IT WORKS ── */
+.how-section{background:var(--bg2)}
+.how-wrap{max-width:1280px;margin:0 auto;padding:80px 48px}
+.steps-flow{display:flex;flex-direction:column;gap:0;position:relative}
+.steps-flow::before{content:'';position:absolute;left:23px;top:44px;bottom:44px;width:1px;background:linear-gradient(to bottom,transparent,var(--line2) 20%,var(--line2) 80%,transparent)}
+.step-row{display:flex;gap:32px;align-items:flex-start;padding:28px 0;position:relative}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--card);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:var(--h);font-size:15px;font-weight:800;color:var(--gold);flex-shrink:0;position:relative;z-index:1}
+.step-num.active{background:var(--gold);color:#0a0906;border-color:var(--gold);box-shadow:0 0 24px rgba(192,154,94,.25)}
+.step-content h3{font-family:var(--h);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:6px;margin-top:8px}
+.step-content p{font-size:.9rem;color:var(--grey);line-height:1.7}
+.step-content .step-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.step-tag{font-size:11px;background:var(--card2);border:1px solid var(--line);color:var(--grey);padding:3px 10px;border-radius:100px;font-weight:500}
+.step-tag.gold{background:var(--gold-dimmer);border-color:rgba(192,154,94,.2);color:var(--gold)}
+@media(max-width:760px){.how-wrap{padding:64px 20px}.steps-flow::before{left:20px}}
+
+/* ── WHAT YOU GET ── */
+.output-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.output-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:24px;display:flex;flex-direction:column;gap:10px;transition:.18s}
+.output-card:hover{border-color:var(--line2);background:var(--card2)}
+.output-icon{width:38px;height:38px;background:var(--gold-dimmer);border:1px solid rgba(192,154,94,.15);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.output-icon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.output-card h3{font-family:var(--h);font-size:.95rem;font-weight:700;color:var(--white)}
+.output-card p{font-size:.85rem;color:var(--grey);line-height:1.65}
+@media(max-width:900px){.output-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.output-grid{grid-template-columns:1fr}}
+
+/* ── SERVICES ── */
+.services-section{background:var(--bg)}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.service-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:32px;display:flex;flex-direction:column;gap:16px;transition:.18s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,var(--gold-dimmer) 0%,transparent 70%);pointer-events:none}
+.service-card:hover{border-color:rgba(192,154,94,.2)}
+.service-card.featured{border-color:rgba(192,154,94,.25);background:linear-gradient(135deg,rgba(192,154,94,.06),var(--card))}
+.service-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--gold);font-family:var(--h)}
+.service-card h3{font-family:var(--h);font-size:1.3rem;font-weight:800;color:var(--white)}
+.service-card p{font-size:.9rem;color:var(--grey);line-height:1.7}
+.service-price{display:flex;align-items:baseline;gap:6px}
+.service-price strong{font-family:var(--h);font-size:1.7rem;font-weight:800;color:var(--white)}
+.service-price span{font-size:.85rem;color:var(--grey)}
+.service-list{display:flex;flex-direction:column;gap:8px}
+.service-list li{font-size:.875rem;color:var(--grey);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.service-list li::before{content:'—';color:var(--gold);flex-shrink:0;margin-top:1px}
+.service-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--h);font-size:13.5px;font-weight:600;color:var(--gold);cursor:pointer;background:none;border:none;padding:0;margin-top:auto;transition:.15s}
+.service-cta:hover{color:var(--gold2)}
+.service-cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.service-full{grid-column:1/-1}
+@media(max-width:760px){.services-grid{grid-template-columns:1fr}}
+
+/* ── MATERIAL PACKS ── */
+.packs-section{background:var(--bg2)}
+.packs-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:56px}
+.packs-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.pack-tab{background:var(--card);border:1px solid var(--line);border-radius:100px;padding:8px 18px;font-family:var(--h);font-size:13px;font-weight:600;color:var(--grey);cursor:pointer;transition:.15s;border:none}
+.pack-tab.active,.pack-tab:hover{background:var(--gold-dim);color:var(--gold)}
+.pack-options{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.pack-option{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;transition:.18s;cursor:pointer}
+.pack-option:hover{border-color:var(--line2)}
+.pack-option.featured{border-color:rgba(192,154,94,.25);background:linear-gradient(135deg,rgba(192,154,94,.07),var(--card))}
+.pack-tier{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--grey2);font-family:var(--h);margin-bottom:8px}
+.pack-option strong{font-family:var(--h);font-size:1rem;font-weight:700;color:var(--white);display:block;margin-bottom:6px}
+.pack-option .price{font-family:var(--h);font-size:1.4rem;font-weight:800;color:var(--gold);display:block;margin-bottom:10px}
+.pack-option p{font-size:.82rem;color:var(--grey);line-height:1.6}
+.pack-option .delivery{font-size:11px;color:var(--grey2);margin-top:10px;display:flex;align-items:center;gap:5px}
+.pack-option .delivery span{width:5px;height:5px;background:var(--grey2);border-radius:50%;display:inline-block}
+.pack-option.featured .delivery span{background:var(--gold)}
+.pack-option.featured .delivery{color:var(--gold)}
+@media(max-width:900px){.packs-intro{grid-template-columns:1fr;gap:40px}.pack-options{grid-template-columns:1fr}}
+@media(max-width:560px){.pack-options{grid-template-columns:1fr}}
+
+/* ── WHY ── */
+.why-section{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:32px;display:flex;flex-direction:column;gap:14px}
+.why-num{font-family:var(--h);font-size:2rem;font-weight:800;color:var(--gold);opacity:.25;line-height:1}
+.why-card h3{font-family:var(--h);font-size:1.05rem;font-weight:700;color:var(--white)}
+.why-card p{font-size:.88rem;color:var(--grey);line-height:1.7}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr}}
+
+/* ── COMPARISON TABLE ── */
+.compare-section{background:var(--bg2)}
+.compare-table{border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.compare-head{display:grid;grid-template-columns:1.5fr 1fr 1fr;background:var(--card2);border-bottom:1px solid var(--line)}
+.compare-head div{padding:16px 24px;font-family:var(--h);font-size:12.5px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:.4px}
+.compare-head div:first-child{color:var(--white)}
+.compare-head .ours{color:var(--gold)}
+.compare-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;border-bottom:1px solid var(--line)}
+.compare-row:last-child{border-bottom:none}
+.compare-row div{padding:14px 24px;font-size:.88rem;color:var(--grey);display:flex;align-items:center;gap:8px}
+.compare-row div:first-child{color:var(--text);font-weight:500}
+.compare-row div svg{width:16px;height:16px;flex-shrink:0}
+.compare-row .ours{color:var(--text)}
+@media(max-width:760px){
+  .compare-head{grid-template-columns:1fr 1fr}.compare-head div:nth-child(2){display:none}
+  .compare-row{grid-template-columns:1fr 1fr}.compare-row div:nth-child(2){display:none}
+}
+
+/* ── UPLOAD FORM ── */
+.upload-section{background:var(--bg);padding:80px 48px}
+.upload-wrap{max-width:760px;margin:0 auto}
+.upload-form{background:var(--card);border:1px solid var(--line2);border-radius:var(--r2);padding:40px;display:flex;flex-direction:column;gap:24px}
+.upload-form h2{font-family:var(--h);font-size:1.8rem;font-weight:800;color:var(--white);letter-spacing:-.02em}
+.upload-form p{font-size:.9rem;color:var(--grey)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field label{font-size:12px;font-weight:600;font-family:var(--h);color:var(--grey);text-transform:uppercase;letter-spacing:.4px}
+.form-field input,.form-field select,.form-field textarea{background:var(--bg2);border:1px solid var(--line2);border-radius:7px;padding:12px 16px;color:var(--text);font-size:.9rem;transition:.15s;width:100%}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:rgba(192,154,94,.4);box-shadow:0 0 0 3px rgba(192,154,94,.08)}
+.form-field input::placeholder,.form-field textarea::placeholder{color:var(--grey2)}
+.form-field select option{background:var(--bg2)}
+.form-field textarea{min-height:90px;resize:vertical}
+.upload-zone{border:1.5px dashed var(--line2);border-radius:10px;padding:36px;text-align:center;cursor:pointer;transition:.18s;display:flex;flex-direction:column;align-items:center;gap:12px;background:var(--bg2)}
+.upload-zone:hover{border-color:rgba(192,154,94,.3);background:var(--card2)}
+.upload-zone svg{width:32px;height:32px;stroke:var(--grey2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.upload-zone strong{font-family:var(--h);font-size:.95rem;font-weight:600;color:var(--text)}
+.upload-zone span{font-size:.8rem;color:var(--grey2)}
+.upload-types{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:4px}
+.upload-type{font-size:11px;background:var(--card3);border:1px solid var(--line);color:var(--grey2);padding:3px 10px;border-radius:100px}
+.form-submit{display:flex;flex-direction:column;gap:12px}
+.form-compliance{font-size:11.5px;color:var(--grey2);line-height:1.6}
+.form-full{grid-column:1/-1}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}.upload-form{padding:24px}.upload-section{padding:64px 20px}}
+
+/* ── COMPLIANCE ── */
+.compliance-section{background:var(--card2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 48px}
+.compliance-inner{max-width:1280px;margin:0 auto;display:flex;gap:24px;align-items:flex-start}
+.compliance-icon{width:40px;height:40px;border-radius:9px;background:var(--gold-dimmer);border:1px solid rgba(192,154,94,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.compliance-icon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.compliance-text strong{font-family:var(--h);font-size:.88rem;font-weight:700;color:var(--white);display:block;margin-bottom:4px}
+.compliance-text p{font-size:.82rem;color:var(--grey);line-height:1.65}
+@media(max-width:760px){.compliance-section{padding:28px 20px}}
+
+/* ── FAQ ── */
+.faq-section{background:var(--bg2)}
+.faq-list{max-width:720px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;font-family:var(--h);font-size:1rem;font-weight:600;color:var(--white);cursor:pointer;list-style:none;transition:.15s}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:var(--gold)}
+.faq-toggle{width:24px;height:24px;border:1px solid var(--line2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:var(--grey);transition:.15s}
+.faq-item[open] .faq-toggle{background:var(--gold-dim);border-color:rgba(192,154,94,.2);color:var(--gold)}
+.faq-item p{padding:0 0 20px;font-size:.9rem;color:var(--grey);line-height:1.75}
+.faq-item p a{color:var(--gold)}
+
+/* ── CTA BAND ── */
+.cta-band{background:linear-gradient(135deg,var(--card) 0%,rgba(192,154,94,.08) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 48px}
+.cta-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.cta-copy h2{font-family:var(--h);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--white);letter-spacing:-.025em;margin-bottom:10px}
+.cta-copy p{font-size:.95rem;color:var(--grey)}
+.cta-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end;white-space:nowrap}
+.cta-note{font-size:11.5px;color:var(--grey2);text-align:right}
+@media(max-width:760px){.cta-band{padding:64px 20px}.cta-inner{grid-template-columns:1fr;gap:28px}.cta-actions{align-items:flex-start}.cta-note{text-align:left}}
+
+/* ── FOOTER ── */
+.footer{background:var(--bg);border-top:1px solid var(--line);padding:48px 48px 32px}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{font-family:var(--h);font-weight:800;font-size:18px;color:var(--white);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.footer-logo em{color:var(--gold);font-style:normal}
+.footer-about{font-size:.85rem;color:var(--grey2);line-height:1.7;max-width:280px}
+.footer-col h4{font-family:var(--h);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--grey2);margin-bottom:14px}
+.footer-col ul{display:flex;flex-direction:column;gap:8px}
+.footer-col li a{font-size:.875rem;color:var(--grey);transition:.15s}
+.footer-col li a:hover{color:var(--white)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:28px;border-top:1px solid var(--line)}
+.footer-bottom p{font-size:.8rem;color:var(--grey2)}
+.footer-bottom span{font-size:.75rem;color:var(--grey2)}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:32px}.footer{padding:48px 20px 24px}}
+@media(max-width:560px){.footer-top{grid-template-columns:1fr}}
+
+/* ── REVEAL ANIMATION ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ── PACK CONTENT (JS controlled) ── */
+.pack-content{display:none}.pack-content.active{display:grid}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 16 16" fill="none" stroke="#0a0906" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 2l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/>
+      </svg>
+    </div>
+    Reno<em>Check</em>
+  </a>
+  <nav class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#services">Services</a>
+    <a href="#packs">Material packs</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a href="#upload" class="nav-cta">
+    Upload my quote
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-marble"></div>
+  <div class="hero-body">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span></span>
+        Renovation Quote Intelligence
+      </div>
+      <h1>Check your renovation quote before you <em>overpay.</em></h1>
+      <p class="hero-lead" style="margin-bottom:10px;font-family:var(--serif);font-size:1.1rem;color:var(--gold);font-style:italic">Design it. Source it. Deliver it.</p>
+      <p class="hero-lead">Upload your bathroom, kitchen, laundry or flooring quote. We compare material pricing, source factory-direct alternatives, and help you understand exactly where the money is going — before you commit.</p>
+      <div class="hero-actions">
+        <a href="#upload" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8M5 5l3-3 3 3M3 13h10"/></svg>
+          Upload my quote
+        </a>
+        <a href="#upload" class="btn-secondary">Send my plans</a>
+        <a href="#packs" class="btn-ghost">Build a material pack →</a>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-pill"><i></i>Sourcing &amp; procurement only</div>
+        <div class="trust-pill"><i></i>Not a licensed builder</div>
+        <div class="trust-pill"><i></i>Australian-owned</div>
+        <div class="trust-pill"><i></i>ACCC compliant</div>
+      </div>
+    </div>
+    <div>
+      <div class="quote-mockup">
+        <div class="mock-titlebar">
+          <div class="mock-dots">
+            <div class="mock-dot"></div>
+            <div class="mock-dot"></div>
+            <div class="mock-dot"></div>
+          </div>
+          <div class="mock-title">RenoCheck — Quote Analysis</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-status">
+            <div class="mock-status-dot"></div>
+            <span>Comparing materials against 40+ suppliers…</span>
+          </div>
+          <div class="mock-quote-row">
+            <div>
+              <strong>Freestanding Bath — 1700mm</strong>
+              <span>Builder quoted: Caroma Contura</span>
+            </div>
+            <div class="mock-quote-price">
+              <div class="orig">$3,890</div>
+              <div class="reno">$2,190</div>
+              <div class="save">Save $1,700</div>
+            </div>
+          </div>
+          <div class="mock-quote-row">
+            <div>
+              <strong>Wall-hung Vanity 1200mm</strong>
+              <span>Builder quoted: Kado Lure</span>
+            </div>
+            <div class="mock-quote-price">
+              <div class="orig">$2,640</div>
+              <div class="reno">$1,480</div>
+              <div class="save">Save $1,160</div>
+            </div>
+          </div>
+          <div class="mock-quote-row">
+            <div>
+              <strong>Floor tiles — Marble look 600×600</strong>
+              <span>Builder quoted: Beaumont Tiles</span>
+            </div>
+            <div class="mock-quote-price">
+              <div class="orig">$88/m²</div>
+              <div class="reno">$44/m²</div>
+              <div class="save">Save 50%</div>
+            </div>
+          </div>
+          <div class="mock-quote-row">
+            <div>
+              <strong>Matte black tapware set</strong>
+              <span>Builder quoted: Reece Scala</span>
+            </div>
+            <div class="mock-quote-price">
+              <div class="orig">$1,820</div>
+              <div class="reno">$960</div>
+              <div class="save">Save $860</div>
+            </div>
+          </div>
+          <div class="mock-summary">
+            <div class="mock-sum-card">
+              <span>Builder total</span>
+              <strong style="color:var(--grey)">$38,400</strong>
+            </div>
+            <div class="mock-sum-card green">
+              <span>Identified saving</span>
+              <strong>$9,200</strong>
+            </div>
+            <div class="mock-sum-card">
+              <span>Our fee</span>
+              <strong>$249</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS BAR -->
+<div class="logos-bar">
+  <div class="logos-inner">
+    <div class="logos-label">We compare pricing across</div>
+    <div class="logos-items">
+      <div class="logo-chip">Reece</div>
+      <div class="logo-chip">Bunnings</div>
+      <div class="logo-chip">Beaumont</div>
+      <div class="logo-chip">IKEA</div>
+      <div class="logo-chip">Tradelink</div>
+      <div class="logo-chip">TileCloud</div>
+      <div class="logo-chip">ABI Interiors</div>
+      <div class="logo-chip">+ factory direct</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-section">
+  <div class="how-wrap">
+    <span class="sec-label">The process</span>
+    <h2 class="sec-heading">From quote upload to savings identified — fast.</h2>
+    <p class="sec-lead" style="margin-bottom:56px">A clean path from lead → trust → transaction. No inventory risk. No builder licence. Just data.</p>
+
+    <div class="steps-flow">
+      <div class="step-row reveal">
+        <div class="step-num active">1</div>
+        <div class="step-content">
+          <h3>You upload your quote or plans</h3>
+          <p>Attach a builder quote, renovation quote, plans, shopping list, screenshots from Reece/Bunnings/Beaumont, or photos of your space. Any format works — PDF, photo, email screenshot.</p>
+          <div class="step-tags">
+            <span class="step-tag">Builder quote</span>
+            <span class="step-tag">Renovation quote</span>
+            <span class="step-tag">Plans</span>
+            <span class="step-tag">Shopping list</span>
+            <span class="step-tag">Photos</span>
+            <span class="step-tag">Screenshots</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Free quick check within 24 hours</h3>
+          <p>We scan your quote against our supplier database. You receive a free summary of whether your pricing looks reasonable and where we see the biggest opportunity to find savings.</p>
+          <div class="step-tags">
+            <span class="step-tag gold">Free</span>
+            <span class="step-tag">Within 24h</span>
+            <span class="step-tag">No obligation</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Optional: paid detailed comparison</h3>
+          <p>We go line by line through every material item, identify cheaper alternatives, compare local stock vs factory-direct options, model lead times, and prepare a full procurement report.</p>
+          <div class="step-tags">
+            <span class="step-tag">From $99</span>
+            <span class="step-tag">Line-by-line</span>
+            <span class="step-tag">40+ suppliers</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>We identify potential savings</h3>
+          <p>You see exactly which items are overpriced, which supplier alternatives exist, the lead-time tradeoffs, local vs import options, and the questions to ask your builder or trade before you sign.</p>
+          <div class="step-tags">
+            <span class="step-tag gold">Savings identified</span>
+            <span class="step-tag">Alternative options</span>
+            <span class="step-tag">Lead times</span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row reveal">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Source materials & trade introductions</h3>
+          <p>If you want to act on the savings, we can source the materials for you. We can also introduce you to suitable independent local installers where required — disclosed as a referral arrangement.</p>
+          <div class="step-tags">
+            <span class="step-tag">Material supply</span>
+            <span class="step-tag">Trade introductions</span>
+            <span class="step-tag">Disclosed referral</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="services-section" style="background:var(--bg)">
+  <div class="section">
+    <span class="sec-label">What you receive</span>
+    <div class="sec-head" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:40px">
+      <h2 class="sec-heading" style="margin-bottom:0">Every report includes all of this.</h2>
+      <p class="sec-lead" style="margin-top:8px">Potential savings depend on product, freight, lead time, and install requirements. We never guarantee specific figures — we help you compare your options accurately.</p>
+    </div>
+    <div class="output-grid">
+      <div class="output-card reveal">
+        <div class="output-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h3>Material price comparison</h3>
+        <p>Your quoted items benchmarked against current supplier pricing across 40+ Australian retailers and importers.</p>
+      </div>
+      <div class="output-card reveal">
+        <div class="output-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h8M4 18h8"/><path d="M17 14l2 2 4-4"/></svg>
+        </div>
+        <h3>Cheaper alternatives</h3>
+        <p>Where equivalent or near-equivalent products exist at lower price points — by brand, spec, or supplier channel.</p>
+      </div>
+      <div class="output-card reveal">
+        <div class="output-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Lead-time options</h3>
+        <p>In-stock local options vs factory-direct savings with realistic import timelines. Know the tradeoff before you decide.</p>
+      </div>
+      <div class="output-card reveal">
+        <div class="output-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3l18 18M10.5 10.677A2 2 0 1013.323 13.5M17 12a5 5 0 00-7.543-4.306M6.228 6.228A10 10 0 0017.77 17.77"/></svg>
+        </div>
+        <h3>Local vs import options</h3>
+        <p>Australian-stocked vs factory-direct product options with honest assessment of quality, margin, and delivery risk.</p>
+      </div>
+      <div class="output-card reveal">
+        <div class="output-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </div>
+        <h3>Questions to ask your builder</h3>
+        <p>Specific, line-item questions you should raise with your builder or trade before signing — including supply allowances, install scope, and warranties.</p>
+      </div>
+      <div class="output-card reveal">
+        <div class="output-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </div>
+        <h3>Procurement recommendation</h3>
+        <p>A clear recommendation on where to source, what to supply yourself vs leave with the builder, and estimated material cost range.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / PRICING -->
+<section id="services" class="services-section">
+  <div class="section">
+    <span class="sec-label">Services &amp; pricing</span>
+    <div class="sec-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <div>
+        <h2 class="sec-heading">Start with what you need.</h2>
+        <p class="sec-lead">Quote check, full comparison, supply packs, or trade introductions. Pick an entry point.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-label">Quote Intelligence</div>
+        <h3>Quick Quote Check</h3>
+        <div class="service-price">
+          <strong>Free</strong>
+        </div>
+        <p>Upload your quote and we'll return a high-level summary of whether your material pricing looks reasonable — and flag the biggest areas of concern.</p>
+        <ul class="service-list">
+          <li>High-level price signal — reasonable or overpriced</li>
+          <li>Top 3 areas worth reviewing</li>
+          <li>Response within 24 hours</li>
+          <li>No obligation, no credit card</li>
+        </ul>
+        <a href="#upload" class="service-cta">Get a free check <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card featured reveal">
+        <div class="service-label">Most popular</div>
+        <h3>Full Quote Review</h3>
+        <div class="service-price">
+          <strong>from $99</strong>
+          <span>per quote</span>
+        </div>
+        <p>Line-by-line analysis of your renovation quote. We compare each material against current supplier pricing and identify alternatives.</p>
+        <ul class="service-list">
+          <li>Line-by-line material breakdown</li>
+          <li>Alternative product options identified</li>
+          <li>Supplier vs supplier pricing comparison</li>
+          <li>Questions to ask your builder</li>
+          <li>PDF report delivered within 48h</li>
+        </ul>
+        <a href="#upload" class="service-cta">Start a quote review <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-label">Procurement</div>
+        <h3>Full Material Comparison</h3>
+        <div class="service-price">
+          <strong>from $249</strong>
+          <span>per project</span>
+        </div>
+        <p>Complete material sourcing analysis across your entire project — including lead times, local vs factory-direct split, and a procurement plan.</p>
+        <ul class="service-list">
+          <li>Full project material comparison</li>
+          <li>Factory-direct alternatives sourced</li>
+          <li>Lead-time and freight modelling</li>
+          <li>Local vs import cost-benefit</li>
+          <li>Procurement recommendation included</li>
+        </ul>
+        <a href="#upload" class="service-cta">Get started <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-label">Plan Takeoff</div>
+        <h3>Plan Review &amp; Procurement Plan</h3>
+        <div class="service-price">
+          <strong>from $499</strong>
+          <span>per plan set</span>
+        </div>
+        <p>Upload architectural plans or renovation drawings. We extract a full material schedule, price each item, and build a procurement plan before you go to market for quotes.</p>
+        <ul class="service-list">
+          <li>Material schedule from plans</li>
+          <li>Full pricing per item</li>
+          <li>Specification alternatives</li>
+          <li>Build-ready procurement plan</li>
+          <li>Know your budget before builder quotes</li>
+        </ul>
+        <a href="#upload" class="service-cta">Send your plans <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Trade intro strip -->
+    <div style="margin-top:20px;background:var(--card2);border:1px solid var(--line);border-radius:var(--r2);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:var(--h);font-size:.8rem;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Trade Introductions</div>
+        <div style="font-family:var(--h);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px">Need an installer? We can introduce you to independent local trades.</div>
+        <p style="font-size:.85rem;color:var(--grey2)">Available once material sourcing is confirmed. A disclosed referral arrangement — not builder management. Licensed trades are required for regulated works.</p>
+      </div>
+      <a href="#upload" class="btn-secondary" style="flex-shrink:0">Enquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIAL PACKS -->
+<section id="packs" class="packs-section">
+  <div class="section">
+    <div class="packs-intro">
+      <div>
+        <span class="sec-label">RenoSupply</span>
+        <h2 class="sec-heading">Pre-curated material packs. Three options per room.</h2>
+        <p class="sec-lead">Once we understand what the market wants — from quote reviews — we create standardised packs. Fast local delivery, factory direct, or premium finish. Every room. Every budget.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:28px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-family:var(--h);font-size:.8rem;font-weight:700;color:var(--grey2);text-transform:uppercase;letter-spacing:.5px">Every pack includes</div>
+        <ul style="display:flex;flex-direction:column;gap:8px">
+          <li style="font-size:.875rem;color:var(--grey);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--gold);flex-shrink:0">—</span>Three product tier options</li>
+          <li style="font-size:.875rem;color:var(--grey);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--gold);flex-shrink:0">—</span>In-stock and factory-direct pricing</li>
+          <li style="font-size:.875rem;color:var(--grey);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--gold);flex-shrink:0">—</span>Realistic lead-time guide</li>
+          <li style="font-size:.875rem;color:var(--grey);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--gold);flex-shrink:0">—</span>Spec sheet for each product</li>
+          <li style="font-size:.875rem;color:var(--grey);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--gold);flex-shrink:0">—</span>Trade installation notes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="packs-tabs">
+      <button class="pack-tab active" data-pack="bathroom">Bathroom</button>
+      <button class="pack-tab" data-pack="kitchen">Kitchen Facelift</button>
+      <button class="pack-tab" data-pack="laundry">Laundry</button>
+      <button class="pack-tab" data-pack="bedroom">Bedroom &amp; Living</button>
+      <button class="pack-tab" data-pack="presale">Pre-Sale Refresh</button>
+    </div>
+
+    <!-- Bathroom Pack -->
+    <div class="pack-content active pack-options" id="pack-bathroom">
+      <div class="pack-option reveal">
+        <div class="pack-tier">Fast Local</div>
+        <strong>Bathroom Complete</strong>
+        <div class="price">from $2,990</div>
+        <p>Australian-stocked vanity, basin, tapware, mirror, shower screen, towel rail, and accessories. Ready to ship in 3–7 business days.</p>
+        <div class="delivery"><span></span>3–7 day delivery · Lower margin</div>
+        <ul style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <li style="font-size:.8rem;color:var(--grey)">Wall-hung vanity 750–900mm</li>
+          <li style="font-size:.8rem;color:var(--grey)">Basin + mixer tap</li>
+          <li style="font-size:.8rem;color:var(--grey)">Shower screen 900mm</li>
+          <li style="font-size:.8rem;color:var(--grey)">Towel rail + accessories</li>
+          <li style="font-size:.8rem;color:var(--grey)">Mirror or mirror cabinet</li>
+        </ul>
+      </div>
+      <div class="pack-option featured reveal">
+        <div class="pack-tier">Factory Direct — Best Value</div>
+        <strong>Bathroom Complete</strong>
+        <div class="price">from $1,990</div>
+        <p>Same specification, factory-direct sourced. Better margin, 4–6 week lead time. Ideal if your build start is 6+ weeks away.</p>
+        <div class="delivery"><span></span>4–6 weeks · Better margin</div>
+        <ul style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <li style="font-size:.8rem;color:var(--text)">Same spec as Fast Local</li>
+          <li style="font-size:.8rem;color:var(--text)">Factory-direct price</li>
+          <li style="font-size:.8rem;color:var(--text)">Pre-order with 4–6 week lead</li>
+          <li style="font-size:.8rem;color:var(--text)">Freight included to metro</li>
+        </ul>
+      </div>
+      <div class="pack-option reveal">
+        <div class="pack-tier">Premium</div>
+        <strong>Bathroom Complete</strong>
+        <div class="price">from $4,990</div>
+        <p>Higher-finish products. Matte black tapware, stone or stone-look basins, frameless shower screen, LED mirrors, premium towel rails.</p>
+        <div class="delivery"><span></span>Varies by product · Higher finish</div>
+        <ul style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <li style="font-size:.8rem;color:var(--grey)">Matte black tapware</li>
+          <li style="font-size:.8rem;color:var(--grey)">Stone or stone-look basin</li>
+          <li style="font-size:.8rem;color:var(--grey)">Frameless shower screen</li>
+          <li style="font-size:.8rem;color:var(--grey)">LED mirror cabinet</li>
+          <li style="font-size:.8rem;color:var(--grey)">Premium towel and robe hooks</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Kitchen Pack -->
+    <div class="pack-content pack-options" id="pack-kitchen">
+      <div class="pack-option reveal">
+        <div class="pack-tier">Fast Local</div>
+        <strong>Kitchen Facelift</strong>
+        <div class="price">from $3,990</div>
+        <p>Cabinet doors, handles, sink, mixer, splashback options. Locally stocked. Ready to ship 3–7 days.</p>
+        <div class="delivery"><span></span>3–7 day delivery</div>
+      </div>
+      <div class="pack-option featured reveal">
+        <div class="pack-tier">Factory Direct — Best Value</div>
+        <strong>Kitchen Facelift</strong>
+        <div class="price">from $2,490</div>
+        <p>Factory-direct cabinet fronts, benchtop options, sink and mixer. 30–40% cost improvement on retail pricing.</p>
+        <div class="delivery"><span></span>5–7 weeks · Best value</div>
+      </div>
+      <div class="pack-option reveal">
+        <div class="pack-tier">Premium</div>
+        <strong>Kitchen Facelift</strong>
+        <div class="price">from $6,490</div>
+        <p>Stone benchtop selection, integrated handles, high-spec sink and mixer, premium splashback glass or tile options.</p>
+        <div class="delivery"><span></span>Varies · Higher finish</div>
+      </div>
+    </div>
+
+    <!-- Laundry Pack -->
+    <div class="pack-content pack-options" id="pack-laundry">
+      <div class="pack-option reveal">
+        <div class="pack-tier">Fast Local</div>
+        <strong>Laundry Complete</strong>
+        <div class="price">from $1,490</div>
+        <p>Cabinetry, benchtop, sink, tapware, storage. Australian-stocked, 3–7 day delivery.</p>
+        <div class="delivery"><span></span>3–7 day delivery</div>
+      </div>
+      <div class="pack-option featured reveal">
+        <div class="pack-tier">Factory Direct</div>
+        <strong>Laundry Complete</strong>
+        <div class="price">from $990</div>
+        <p>Factory-direct laundry suite. Best value for a complete laundry refresh before settlement or tenancy.</p>
+        <div class="delivery"><span></span>4–6 weeks · Best value</div>
+      </div>
+      <div class="pack-option reveal">
+        <div class="pack-tier">Premium</div>
+        <strong>Laundry Complete</strong>
+        <div class="price">from $2,490</div>
+        <p>Stone benchtop, concealed cabinetry, premium tapware, broom and storage integration.</p>
+        <div class="delivery"><span></span>Varies · Higher finish</div>
+      </div>
+    </div>
+
+    <!-- Bedroom & Living Pack -->
+    <div class="pack-content pack-options" id="pack-bedroom">
+      <div class="pack-option reveal">
+        <div class="pack-tier">Fast Local</div>
+        <strong>Bedroom &amp; Living</strong>
+        <div class="price">from $2,490</div>
+        <p>Flooring, wall panelling, wardrobe hardware, lighting fixtures, curtain track. Australian-stocked, 3–7 day delivery.</p>
+        <div class="delivery"><span></span>3–7 day delivery</div>
+        <ul style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <li style="font-size:.8rem;color:var(--grey)">Engineered timber flooring</li>
+          <li style="font-size:.8rem;color:var(--grey)">Slat wall panel options</li>
+          <li style="font-size:.8rem;color:var(--grey)">Wardrobe hardware &amp; handles</li>
+          <li style="font-size:.8rem;color:var(--grey)">Lighting &amp; track options</li>
+        </ul>
+      </div>
+      <div class="pack-option featured reveal">
+        <div class="pack-tier">Factory Direct — Best Value</div>
+        <strong>Bedroom &amp; Living</strong>
+        <div class="price">from $1,790</div>
+        <p>Factory-direct engineered flooring, wall panels, and fixtures. The biggest savings are in flooring — 30–50% off retail per m².</p>
+        <div class="delivery"><span></span>5–7 weeks · Best value per m²</div>
+        <ul style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <li style="font-size:.8rem;color:var(--text)">Engineered timber — from $44/m²</li>
+          <li style="font-size:.8rem;color:var(--text)">Stone-look SPC flooring option</li>
+          <li style="font-size:.8rem;color:var(--text)">Slat wall panels — factory-direct</li>
+          <li style="font-size:.8rem;color:var(--text)">Freight included to metro</li>
+        </ul>
+      </div>
+      <div class="pack-option reveal">
+        <div class="pack-tier">Premium</div>
+        <strong>Bedroom &amp; Living</strong>
+        <div class="price">from $4,490</div>
+        <p>Solid timber or premium engineered flooring, custom slat walls, brass wall sconces, integrated wardrobe system.</p>
+        <div class="delivery"><span></span>Varies · Higher finish</div>
+        <ul style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <li style="font-size:.8rem;color:var(--grey)">Premium engineered or solid timber</li>
+          <li style="font-size:.8rem;color:var(--grey)">Custom slat wall panels</li>
+          <li style="font-size:.8rem;color:var(--grey)">Brass or matte black sconces</li>
+          <li style="font-size:.8rem;color:var(--grey)">Integrated wardrobe hardware</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pre-Sale Pack -->
+    <div class="pack-content pack-options" id="pack-presale">
+      <div class="pack-option reveal">
+        <div class="pack-tier">Fast Local</div>
+        <strong>Pre-Sale Refresh</strong>
+        <div class="price">from $2,490</div>
+        <p>Paint, flooring, cabinet handles, light fixtures, bathroom accessories. Everything to lift the presentation before sale.</p>
+        <div class="delivery"><span></span>3–7 day delivery</div>
+      </div>
+      <div class="pack-option featured reveal">
+        <div class="pack-tier">Full Refresh — Best Value</div>
+        <strong>Pre-Sale Refresh</strong>
+        <div class="price">from $1,990</div>
+        <p>Coordinated selection of refresh products for maximum vendor appeal. Interior lighting, flooring, tapware, and hardware.</p>
+        <div class="delivery"><span></span>Mix of local and import · Best ROI</div>
+      </div>
+      <div class="pack-option reveal">
+        <div class="pack-tier">Premium Presentation</div>
+        <strong>Pre-Sale Refresh</strong>
+        <div class="price">from $4,990</div>
+        <p>Complete pre-sale presentation package. Feature lighting, stone or timber flooring options, premium hardware and tapware.</p>
+        <div class="delivery"><span></span>Varies · Maximum impact</div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;padding:20px 24px;background:var(--card2);border:1px solid var(--line);border-radius:var(--r);font-size:.82rem;color:var(--grey2)">
+      Pack pricing is indicative. Final pricing depends on product selection, suburb, and delivery requirements. Request a custom pack quote for your specific project.
+    </div>
+  </div>
+</section>
+
+<!-- WHY RENOCHECK -->
+<section class="why-section">
+  <div class="section">
+    <span class="sec-label">Why RenoCheck</span>
+    <h2 class="sec-heading sec-head" style="margin-bottom:48px">You're spending tens of thousands.<br>A $99 check makes sense.</h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <h3>Market intelligence, not guesswork</h3>
+        <p>We compare against current supplier pricing across 40+ Australian retailers and importers — including factory-direct channels most builders don't advertise. Real numbers, current pricing.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">02</div>
+        <h3>No inventory risk, no builder liability</h3>
+        <p>We're a sourcing and procurement service. We don't carry stock, we don't manage trades, and we don't hold builder's licences. What we do is give you the information to make better decisions.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">03</div>
+        <h3>Data from every quote we review</h3>
+        <p>Every quote we review tells us what builders are charging, what products are common, and which categories have the biggest markup. That market intelligence feeds back into better comparison data for you.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">04</div>
+        <h3>Know before you sign</h3>
+        <p>Most people find out they overpaid after the renovation. Our job is to put that information in your hands before you sign the contract — when you still have leverage and options.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">05</div>
+        <h3>Compliant with ACCC guidelines</h3>
+        <p>We don't make claims we can't back up. Potential savings depend on product, freight, lead time, and install requirements. We'll always tell you the honest picture — not a sales pitch.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">06</div>
+        <h3>Supply packs backed by quote data</h3>
+        <p>Our material packs aren't random selections. They're built from the most commonly quoted products across bathroom, kitchen, laundry, and refresh categories — at pricing we've already validated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare-section">
+  <div class="section">
+    <span class="sec-label">How we compare</span>
+    <h2 class="sec-heading sec-head" style="margin-bottom:40px">What you get that you won't find elsewhere.</h2>
+    <div class="compare-table">
+      <div class="compare-head">
+        <div>Feature</div>
+        <div>Typical builder supply</div>
+        <div class="ours">RenoCheck</div>
+      </div>
+      <div class="compare-row">
+        <div>Line-by-line price transparency</div>
+        <div><svg viewBox="0 0 16 16" stroke="#e74c3c" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg> Rarely itemised</div>
+        <div class="ours"><svg viewBox="0 0 16 16" stroke="#4ade80" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 8l4 4 8-8"/></svg> Every line item</div>
+      </div>
+      <div class="compare-row">
+        <div>Alternative product options</div>
+        <div><svg viewBox="0 0 16 16" stroke="#e74c3c" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg> Not provided</div>
+        <div class="ours"><svg viewBox="0 0 16 16" stroke="#4ade80" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 8l4 4 8-8"/></svg> Identified per item</div>
+      </div>
+      <div class="compare-row">
+        <div>Factory-direct pricing access</div>
+        <div><svg viewBox="0 0 16 16" stroke="#e74c3c" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg> Usually not available</div>
+        <div class="ours"><svg viewBox="0 0 16 16" stroke="#4ade80" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 8l4 4 8-8"/></svg> Yes, where applicable</div>
+      </div>
+      <div class="compare-row">
+        <div>Questions to ask your builder</div>
+        <div><svg viewBox="0 0 16 16" stroke="#e74c3c" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg> No guidance given</div>
+        <div class="ours"><svg viewBox="0 0 16 16" stroke="#4ade80" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 8l4 4 8-8"/></svg> Included in every report</div>
+      </div>
+      <div class="compare-row">
+        <div>Independent of your builder</div>
+        <div><svg viewBox="0 0 16 16" stroke="#e74c3c" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg> Same party supplying</div>
+        <div class="ours"><svg viewBox="0 0 16 16" stroke="#4ade80" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 8l4 4 8-8"/></svg> Fully independent</div>
+      </div>
+      <div class="compare-row">
+        <div>Lead-time modelling</div>
+        <div><svg viewBox="0 0 16 16" stroke="#e74c3c" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg> Rarely disclosed</div>
+        <div class="ours"><svg viewBox="0 0 16 16" stroke="#4ade80" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 8l4 4 8-8"/></svg> Modelled per option</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPLOAD FORM -->
+<section id="upload" class="upload-section">
+  <div class="upload-wrap">
+    <span class="sec-label" style="display:block;margin-bottom:10px">Get started</span>
+    <div class="upload-form">
+      <div>
+        <h2>Upload your quote or plans.</h2>
+        <p style="margin-top:8px">Send us what you have. We'll respond within 24 hours with a free quick check — no obligation, no card required.</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>First name</label>
+          <input type="text" placeholder="Your first name" name="first_name">
+        </div>
+        <div class="form-field">
+          <label>Last name</label>
+          <input type="text" placeholder="Your last name" name="last_name">
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" name="email">
+        </div>
+        <div class="form-field">
+          <label>Phone (optional)</label>
+          <input type="tel" placeholder="04xx xxx xxx" name="phone">
+        </div>
+        <div class="form-field">
+          <label>What are you renovating?</label>
+          <select name="project_type">
+            <option value="" disabled selected>Select renovation type</option>
+            <option>Bathroom</option>
+            <option>Kitchen</option>
+            <option>Laundry</option>
+            <option>Flooring</option>
+            <option>Full home renovation</option>
+            <option>Pre-sale refresh</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Estimated quote value</label>
+          <select name="quote_value">
+            <option value="" disabled selected>Select range</option>
+            <option>Under $10,000</option>
+            <option>$10,000 – $30,000</option>
+            <option>$30,000 – $60,000</option>
+            <option>$60,000 – $100,000</option>
+            <option>Over $100,000</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-field form-full">
+          <label>Tell us about your project (optional)</label>
+          <textarea placeholder="What's the renovation scope, suburb, timeframe, or anything else useful?" name="notes"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <div class="upload-zone" onclick="document.getElementById('quote-file').click()">
+          <svg viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+          <strong>Upload your quote, plans, or photos</strong>
+          <span>Click to browse or drag and drop files here</span>
+          <div class="upload-types">
+            <span class="upload-type">PDF</span>
+            <span class="upload-type">JPG / PNG</span>
+            <span class="upload-type">DOCX</span>
+            <span class="upload-type">XLS</span>
+            <span class="upload-type">DWG / DXF</span>
+          </div>
+        </div>
+        <input type="file" id="quote-file" multiple accept=".pdf,.jpg,.jpeg,.png,.docx,.xlsx,.xls,.dwg,.dxf" style="display:none" onchange="showFiles(this)">
+        <div id="file-list" style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px"></div>
+      </div>
+
+      <div class="form-submit">
+        <button type="button" class="btn-primary" onclick="submitForm()" style="width:100%;justify-content:center;padding:15px">
+          Send for a free check
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <p class="form-compliance">By submitting, you agree to be contacted about your enquiry. We handle your information in accordance with Australian Privacy Principles. We do not share your quote information with third parties without your consent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<div class="compliance-section">
+  <div class="compliance-inner">
+    <div class="compliance-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div class="compliance-text">
+      <strong>Licensing &amp; compliance disclosure</strong>
+      <p>RenoCheck is a sourcing and procurement service, not a licensed builder. We do not manage construction, hold builder's licences, or provide building advice. Licensed trades are required for plumbing, electrical, gas, waterproofing, and other regulated works in all Australian states and territories. Trade introductions are disclosed as referral arrangements. Material savings are identified through supplier comparison — potential savings depend on product, freight, lead time, and installation requirements and are not guaranteed. Our claims are made with reasonable grounds in accordance with ACCC consumer protection guidelines.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="section">
+    <span class="sec-label">Common questions</span>
+    <h2 class="sec-heading" style="margin-bottom:40px">What people ask before they upload.</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What types of quotes or files can I upload? <div class="faq-toggle">+</div></summary>
+        <p>Almost anything you have — a builder's quote as a PDF, renovation quote, shopping list from Bunnings or Reece, architectural plans, renovation drawings, photos of your space, or screenshots from a supplier website. We work with whatever you've got. Supported file types include PDF, JPG, PNG, DOCX, XLSX, and DWG/DXF plan files.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long does it take to get a report? <div class="faq-toggle">+</div></summary>
+        <p>The free quick check is returned within 24 hours of upload on business days. A paid Full Quote Review ($99+) takes up to 48 hours. A full Material Comparison ($249+) or Plan Takeoff ($499+) takes up to 5 business days depending on project complexity.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are you a building company? Can you manage my renovation? <div class="faq-toggle">+</div></summary>
+        <p>No. We are a sourcing and procurement service — we do not hold builder's licences, manage construction, or provide building advice. If you need licensed trades for plumbing, electrical, gas, waterproofing, or structural work, you will need to engage them directly or through our trade introduction service. We can introduce you to suitable independent local installers where appropriate, as a disclosed referral arrangement.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are the savings guaranteed? <div class="faq-toggle">+</div></summary>
+        <p>No, and we'll never claim they are. Potential savings depend on the specific products, your location, current freight costs, lead-time requirements, and installation requirements. What we give you is an accurate comparison of alternative supply options so you can make an informed decision — not a headline claim. Our comparisons are based on current supplier pricing at the time of the review.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens to my quote information? <div class="faq-toggle">+</div></summary>
+        <p>Your quote information is handled in accordance with Australian Privacy Principles. We do not share your specific quote details with third parties (including suppliers we compare) without your consent. We use aggregated, anonymised quote data to improve our pricing intelligence — but your personal project details are confidential.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I have to buy materials through you? <div class="faq-toggle">+</div></summary>
+        <p>No. You receive the comparison report and can use it however you like — take it back to your builder, source materials yourself, or ask us to source them. There's no obligation to purchase through RenoCheck. If you do want us to source, we charge a procurement fee (5–12% of supplied materials depending on order size) and will disclose this clearly upfront.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What are material packs? How are they different? <div class="faq-toggle">+</div></summary>
+        <p>Material packs are pre-curated collections of products for a specific room type — bathroom, kitchen, laundry, or pre-sale refresh. Each pack comes in three tiers: Fast Local (Australian-stocked, 3–7 day delivery), Factory Direct (better margin, 4–6 week lead), and Premium (higher-specification finish). Packs are designed to make the supply decision simple when you already know the room scope.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you work with builders and trades, or just homeowners? <div class="faq-toggle">+</div></summary>
+        <p>Both. Homeowners use us to understand and compare their builder's quote. Builders and trades use us as a wholesale supply channel — particularly for factory-direct products where we can improve their own margin. Property managers and real estate agents use our pre-sale refresh packs to prepare properties for sale or rental. If you're a trade interested in a B2B account, <a href="#upload">contact us through the form above</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <div class="cta-copy">
+      <h2>Renovation quote look expensive?<br>Upload it and find out.</h2>
+      <p>Free quick check. No obligation. No credit card. Within 24 hours.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#upload" class="btn-primary" style="font-size:1rem;padding:15px 32px">Upload my quote</a>
+      <a href="#upload" class="btn-secondary">Send my plans</a>
+      <div class="cta-note">or <a href="#packs" style="color:var(--gold)">browse material packs →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Reno<em>Check</em></div>
+        <p class="footer-about">Australia's renovation quote intelligence and procurement service. We help homeowners, trades, and property managers compare material pricing, source alternatives, and make smarter renovation decisions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#upload">Free Quote Check</a></li>
+          <li><a href="#services">Full Quote Review</a></li>
+          <li><a href="#services">Material Comparison</a></li>
+          <li><a href="#services">Plan Takeoff</a></li>
+          <li><a href="#packs">Material Packs</a></li>
+          <li><a href="#upload">Trade Introductions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rooms</h4>
+        <ul>
+          <li><a href="#packs">Bathroom</a></li>
+          <li><a href="#packs">Kitchen</a></li>
+          <li><a href="#packs">Laundry</a></li>
+          <li><a href="#packs">Pre-Sale Refresh</a></li>
+          <li><a href="#packs">Flooring</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#upload">Contact</a></li>
+          <li><a href="#" onclick="return false" style="color:var(--grey2)">Privacy Policy</a></li>
+          <li><a href="#" onclick="return false" style="color:var(--grey2)">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 RenoCheck. All rights reserved. Australian-owned and operated.</p>
+      <span>RenoCheck is a sourcing and procurement service. Not a licensed builder. Licensed trades required for regulated works.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Reveal on scroll ──
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+}, {threshold:.12});
+reveals.forEach(el => io.observe(el));
+
+// ── Pack tabs ──
+document.querySelectorAll('.pack-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.pack-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pack-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('pack-' + tab.dataset.pack).classList.add('active');
+  });
+});
+
+// ── File picker display ──
+function showFiles(input) {
+  const list = document.getElementById('file-list');
+  list.innerHTML = '';
+  Array.from(input.files).forEach(f => {
+    const chip = document.createElement('div');
+    chip.style.cssText = 'display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--line2);border-radius:100px;padding:4px 12px;font-size:12px;color:var(--text)';
+    chip.innerHTML = `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M4 3h5l4 4v6a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M9 3v4h4"/></svg>${f.name}`;
+    list.appendChild(chip);
+  });
+}
+
+// ── FAQ toggle icon ──
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('toggle', () => {
+    const toggle = item.querySelector('.faq-toggle');
+    toggle.textContent = item.open ? '–' : '+';
+  });
+});
+
+// ── Form submit stub ──
+function submitForm() {
+  const email = document.querySelector('[name="email"]').value.trim();
+  const project = document.querySelector('[name="project_type"]').value;
+  if(!email){ alert('Please enter your email address.'); return; }
+  // Replace with real form submission endpoint
+  const btn = document.querySelector('.form-submit .btn-primary');
+  btn.textContent = '✓ Received — we\'ll be in touch within 24 hours';
+  btn.style.background = '#27ae60';
+  btn.style.cursor = 'default';
+  btn.disabled = true;
+}
+
+// ── Smooth nav link scrolling ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
+</body>
+</html>
